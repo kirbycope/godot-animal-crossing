@@ -1,6 +1,7 @@
+![Thumbnail](/ci/thumbnail.png)
+
 # godot-animal-crossing
 A remake of Animal Crossing using the Godot Game Engine.
-![Thumbnail](/ci/thumbnail.png)
 
 <details>
 <summary>Using Addons</summary>
