@@ -1,8 +1,12 @@
-[gd_scene load_steps=11 format=4 uid="uid://c1pw20be6rpev"]
+[gd_scene load_steps=16 format=4 uid="uid://c1pw20be6rpev"]
 
 [ext_resource type="Texture2D" uid="uid://cf5xc5cv04nuk" path="res://assets/characters/tom_nook/tom_nook_b0.png" id="1_x17uc"]
 [ext_resource type="Texture2D" uid="uid://dh7wji52mpgwq" path="res://assets/characters/tom_nook/tom_nook_e.png" id="2_61skh"]
 [ext_resource type="Texture2D" uid="uid://d0t2pnmtbwqsn" path="res://assets/characters/tom_nook/tom_nook_cloth.png" id="3_kuo70"]
+
+[sub_resource type="GDScript" id="GDScript_qhxst"]
+script/source = "extends CharacterBody3D
+"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f0045"]
 resource_name = "b0"
@@ -146,8 +150,96 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[node name="TomNook" type="Node3D"]
+[sub_resource type="Animation" id="Animation_knv7p"]
+resource_name = "walking"
+loop_mode = 1
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Armature/Skeleton3D:Larm1")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0.313, 0, 0.95, 0.5, 1, 0, -0.313, 0, 0.95, 1, 1, 0, 0.313, 0, 0.95)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Armature/Skeleton3D:Rarm1")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, -0.313, 0, 0.95, 0.5, 1, 0, 0.313, 0, 0.95, 1, 1, 0, -0.313, 0, 0.95)
+tracks/2/type = "rotation_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Armature/Skeleton3D:Lfoot1")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, -0.313, 0, 0, 0.95, 0.5, 1, 0.313, 0, 0, 0.95, 1, 1, -0.313, 0, 0, 0.95)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Armature/Skeleton3D:Rfoot1")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0.313, 0, 0, 0.95, 0.5, 1, -0.313, 0, 0, 0.95, 1, 1, 0.313, 0, 0, 0.95)
+tracks/4/type = "rotation_3d"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Armature/Skeleton3D:tail1")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array(0, 1, 0, 0.313, 0, 0.95, 0.5, 1, 0, 0.952, 0, 0.306, 1, 1, 0, 0.313, 0, 0.95)
+
+[sub_resource type="Animation" id="Animation_pgoc7"]
+length = 0.001
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Armature/Skeleton3D:Larm1")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.000474975, -0.354525, 0.000474975, 1.00048)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Armature/Skeleton3D:Rarm1")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+tracks/2/type = "rotation_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Armature/Skeleton3D:Lfoot1")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0.000474975, 0.000474975, 0.000474975, 1.00048)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Armature/Skeleton3D:Rfoot1")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+tracks/4/type = "rotation_3d"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Armature/Skeleton3D:tail1")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array(0, 1, 0.000474975, 0.602475, 0.000474975, 0.707475)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3jaq8"]
+_data = {
+"RESET": SubResource("Animation_pgoc7"),
+"walking": SubResource("Animation_knv7p")
+}
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pqjp4"]
+radius = 12.0
+height = 48.0
+
+[node name="TomNook" type="CharacterBody3D"]
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
+script = SubResource("GDScript_qhxst")
 
 [node name="Armature" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0)
@@ -249,7 +341,7 @@ bones/13/parent = 12
 bones/13/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.09004, -5.79998, 0)
 bones/13/enabled = true
 bones/13/position = Vector3(3.09004, -5.79998, 0)
-bones/13/rotation = Quaternion(0, 0, 0, 1)
+bones/13/rotation = Quaternion(0.000474749, 0.000474749, 0.000474749, 1)
 bones/13/scale = Vector3(1, 1, 1)
 bones/14/name = "Lfoot2"
 bones/14/parent = 13
@@ -312,3 +404,12 @@ skin = SubResource("Skin_eioxg")
 [node name="mesh_2_" type="MeshInstance3D" parent="Armature/Skeleton3D"]
 mesh = SubResource("ArrayMesh_cga7w")
 skin = SubResource("Skin_eioxg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3jaq8")
+}
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24, 0)
+shape = SubResource("CapsuleShape3D_pqjp4")

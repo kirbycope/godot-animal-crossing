@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c3n0ytq5oyds4"]
+[gd_scene load_steps=25 format=3 uid="uid://c3n0ytq5oyds4"]
 
 [ext_resource type="AudioStream" uid="uid://bg2h3mppvdg54" path="res://assets/sounds/music/main_theme.mp3" id="1_6uaqi"]
 [ext_resource type="Texture2D" uid="uid://bwtxwwr1ccdsa" path="res://assets/textures/grass_01.png" id="1_254d0"]
@@ -8,8 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://c1pw20be6rpev" path="res://scenes/characters/tom_nook.tscn" id="3_5up8g"]
 [ext_resource type="Texture2D" uid="uid://djlq2v5hib7rj" path="res://assets/textures/stone_01_a.png" id="3_67eao"]
 [ext_resource type="Texture2D" uid="uid://rr31qinyml12" path="res://assets/textures/cliff.png" id="3_o0to5"]
+[ext_resource type="Script" path="res://scenes/path_3d.gd" id="4_d47mq"]
 [ext_resource type="Texture2D" uid="uid://yqph0wq70bcl" path="res://assets/textures/grass_01_a.png" id="5_k1jje"]
 [ext_resource type="Texture2D" uid="uid://cy3y7bd4jtnw5" path="res://assets/textures/path_01.png" id="8_ua6e5"]
+[ext_resource type="Texture2D" uid="uid://d3fxla45jnq7a" path="res://assets/textures/ac_nl_logo.png" id="12_t6iv0"]
+[ext_resource type="Script" path="res://scenes/texture_rect.gd" id="13_e5imc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_u7ijy"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -54,6 +57,13 @@ uv1_scale = Vector3(2, 2, 2)
 uv1_offset = Vector3(0.5, 0, 0.5)
 uv1_triplanar = true
 
+[sub_resource type="Curve3D" id="Curve3D_ui7w4"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.00814605, 0, -1.22023, 0, 0, 0, 0, 0, 0, -0.00217271, 0, -0.495917, 0, 0, 0, 0, 0, 0, 1.00369, 0, -0.500058, 0, 0, 0, 0, 0, 0, 0.013577, 0, 0.00720325, 0, 0, 0, 0, 0, 0, -1.00741, 0, -0.509185, 0, 0, 0, 0, 0, 0, -0.0080241, 0, -0.497868, 0, 0, 0, 0, 0, 0, -0.0055604, 0, -1.21844, 0, 0, 0, 0, 0, 0, -0.00814605, 0, -1.22023),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
+
 [node name="Main" type="Node3D"]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
@@ -68,17 +78,16 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_gmg8k")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 1, 0.2)
-
 [node name="StationA" parent="." instance=ExtResource("1_roat3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.001, -1.2)
 
 [node name="RailroadCrossing" parent="." instance=ExtResource("2_kp0jm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9, 0, -1.5)
 
-[node name="TomNook" parent="." instance=ExtResource("3_5up8g")]
-transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, -1)
+[node name="CameraMount" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="CameraMount"]
+transform = Transform3D(1, 0, 0, 0, 0.92388, 0.382684, 0, -0.382684, 0.92388, 3.72529e-09, 1, 0.2)
 
 [node name="Cliff" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
@@ -785,3 +794,30 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.75048, 0, 0.74982)
 use_collision = true
 mesh = SubResource("PlaneMesh_w8mlu")
 material = SubResource("StandardMaterial3D_iomfq")
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_ui7w4")
+script = ExtResource("4_d47mq")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(-0.999966, 0, -0.00824658, 0, 1.00008, 0, 0.00824658, 0, -0.999966, -0.00814605, 0, -1.22023)
+rotation_mode = 4
+
+[node name="TomNook" parent="Path3D/PathFollow3D" instance=ExtResource("3_5up8g")]
+transform = Transform3D(-0.01, 0, 8.74228e-10, 0, 0.01, 0, -8.74228e-10, 0, -0.01, 0, 0, 0)
+script = null
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -327.5
+offset_top = -600.0
+offset_right = 327.5
+offset_bottom = -120.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_t6iv0")
+script = ExtResource("13_e5imc")
