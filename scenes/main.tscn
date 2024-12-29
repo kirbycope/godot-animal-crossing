@@ -805,7 +805,6 @@ rotation_mode = 4
 
 [node name="TomNook" parent="Path3D/PathFollow3D" instance=ExtResource("3_5up8g")]
 transform = Transform3D(-0.01, 0, 8.74228e-10, 0, 0.01, 0, -8.74228e-10, 0, -0.01, 0, 0, 0)
-script = null
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchors_preset = 8
@@ -814,9 +813,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -327.5
-offset_top = -600.0
+offset_top = -840.0
 offset_right = 327.5
-offset_bottom = -120.0
+offset_bottom = -360.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("12_t6iv0")
