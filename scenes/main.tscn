@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://c3n0ytq5oyds4"]
+[gd_scene load_steps=28 format=3 uid="uid://c3n0ytq5oyds4"]
 
 [ext_resource type="AudioStream" uid="uid://bg2h3mppvdg54" path="res://assets/sounds/music/main_theme.mp3" id="1_6uaqi"]
 [ext_resource type="Texture2D" uid="uid://bwtxwwr1ccdsa" path="res://assets/textures/grass_01.png" id="1_254d0"]
@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://cy3y7bd4jtnw5" path="res://assets/textures/path_01.png" id="8_ua6e5"]
 [ext_resource type="Texture2D" uid="uid://d3fxla45jnq7a" path="res://assets/textures/ac_nl_logo.png" id="12_t6iv0"]
 [ext_resource type="Script" path="res://scenes/texture_rect.gd" id="13_e5imc"]
+[ext_resource type="Shader" path="res://scenes/color_rect.gdshader" id="14_7h7pv"]
+[ext_resource type="Script" path="res://scenes/color_rect.gd" id="14_ivt84"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_u7ijy"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -63,6 +65,12 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 8
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qerjm"]
+shader = ExtResource("14_7h7pv")
+shader_parameter/progress = 0.0
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/smoothness = 0.1
 
 [node name="Main" type="Node3D"]
 
@@ -806,6 +814,21 @@ rotation_mode = 4
 [node name="TomNook" parent="Path3D/PathFollow3D" instance=ExtResource("3_5up8g")]
 transform = Transform3D(-0.01, 0, 8.74228e-10, 0, 0.01, 0, -8.74228e-10, 0, -0.01, 0, 0, 0)
 
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_qerjm")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -640.0
+offset_top = -640.0
+offset_right = 640.0
+offset_bottom = 640.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("14_ivt84")
+
 [node name="TextureRect" type="TextureRect" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
@@ -820,3 +843,15 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("12_t6iv0")
 script = ExtResource("13_e5imc")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -260.0
+offset_right = 675.0
+offset_bottom = 220.0
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_t6iv0")

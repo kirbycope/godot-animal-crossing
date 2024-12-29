@@ -15,6 +15,8 @@ var is_fading = false
 var waiting_to_start = true
 
 func _ready():
+	# Hide the smaller logo
+	$"../TextureRect2".visible = false
 	# Store initial position
 	start_position = position
 	# Set target position lower than start (adjust Y value as needed)
@@ -45,6 +47,8 @@ func _process(delta):
 		else:
 			# Complete fade out and optionally remove node
 			modulate.a = 0
+			# Show the smaller logo
+			$"../TextureRect2".visible = true
 			queue_free()
 			return
 			
