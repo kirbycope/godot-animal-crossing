@@ -1,8 +1,9 @@
-[gd_scene load_steps=28 format=3 uid="uid://c3n0ytq5oyds4"]
+[gd_scene load_steps=29 format=3 uid="uid://c3n0ytq5oyds4"]
 
 [ext_resource type="AudioStream" uid="uid://bg2h3mppvdg54" path="res://assets/sounds/music/main_theme.mp3" id="1_wjoo1"]
 [ext_resource type="PackedScene" uid="uid://gnculwyvxiec" path="res://scenes/buildings/station_a.tscn" id="2_x6vd4"]
 [ext_resource type="PackedScene" uid="uid://q0bo65ba0rxu" path="res://scenes/buildings/railroad_crossing.tscn" id="3_de2hy"]
+[ext_resource type="PackedScene" uid="uid://ct21r1mn6qiim" path="res://scenes/buildings/train_ext.tscn" id="4_ix02a"]
 [ext_resource type="Texture2D" uid="uid://rr31qinyml12" path="res://assets/textures/cliff.png" id="4_u0bts"]
 [ext_resource type="Texture2D" uid="uid://bwtxwwr1ccdsa" path="res://assets/textures/grass_01.png" id="5_qmx7k"]
 [ext_resource type="Texture2D" uid="uid://yqph0wq70bcl" path="res://assets/textures/grass_01_a.png" id="6_2nsqx"]
@@ -86,11 +87,14 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_gmg8k")
 
+[node name="RailroadCrossing" parent="." instance=ExtResource("3_de2hy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9, 0, -1.5)
+
 [node name="StationA" parent="." instance=ExtResource("2_x6vd4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.001, -1.2)
 
-[node name="RailroadCrossing" parent="." instance=ExtResource("3_de2hy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9, 0, -1.5)
+[node name="Train" parent="." instance=ExtResource("4_ix02a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.5)
 
 [node name="CameraMount" type="Node3D" parent="."]
 
@@ -98,7 +102,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9, 0, -1.5)
 transform = Transform3D(1, 0, 0, 0, 0.92388, 0.382684, 0, -0.382684, 0.92388, 3.72529e-09, 1, 0.2)
 
 [node name="Cliff" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -0.5)
 
 [node name="Cliff1" type="CSGMesh3D" parent="Cliff"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 1.5, 0.5, -2.5)
@@ -315,6 +319,86 @@ material = SubResource("StandardMaterial3D_vhqiw")
 
 [node name="Path16" type="CSGMesh3D" parent="Path"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.74988, 0, -2.24987)
+mesh = SubResource("PlaneMesh_4hs1h")
+material = SubResource("StandardMaterial3D_vhqiw")
+
+[node name="Path17" type="CSGMesh3D" parent="Path"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.75012, 0, -2.74987)
+mesh = SubResource("PlaneMesh_4hs1h")
+material = SubResource("StandardMaterial3D_vhqiw")
+
+[node name="Path18" type="CSGMesh3D" parent="Path"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.25012, 0, -2.74987)
+mesh = SubResource("PlaneMesh_4hs1h")
+material = SubResource("StandardMaterial3D_vhqiw")
+
+[node name="Path19" type="CSGMesh3D" parent="Path"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75012, 0, -2.74987)
+mesh = SubResource("PlaneMesh_4hs1h")
+material = SubResource("StandardMaterial3D_vhqiw")
+
+[node name="Path20" type="CSGMesh3D" parent="Path"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25012, 0, -2.74987)
+mesh = SubResource("PlaneMesh_4hs1h")
+material = SubResource("StandardMaterial3D_vhqiw")
+
+[node name="Path21" type="CSGMesh3D" parent="Path"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75012, 0, -2.74987)
+mesh = SubResource("PlaneMesh_4hs1h")
+material = SubResource("StandardMaterial3D_vhqiw")
+
+[node name="Path22" type="CSGMesh3D" parent="Path"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25012, 0, -2.74987)
+mesh = SubResource("PlaneMesh_4hs1h")
+material = SubResource("StandardMaterial3D_vhqiw")
+
+[node name="Path23" type="CSGMesh3D" parent="Path"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75012, 0, -2.74987)
+mesh = SubResource("PlaneMesh_4hs1h")
+material = SubResource("StandardMaterial3D_vhqiw")
+
+[node name="Path24" type="CSGMesh3D" parent="Path"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25012, 0, -2.74987)
+mesh = SubResource("PlaneMesh_4hs1h")
+material = SubResource("StandardMaterial3D_vhqiw")
+
+[node name="Path25" type="CSGMesh3D" parent="Path"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24988, 0, -2.74987)
+mesh = SubResource("PlaneMesh_4hs1h")
+material = SubResource("StandardMaterial3D_vhqiw")
+
+[node name="Path26" type="CSGMesh3D" parent="Path"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.74988, 0, -2.74987)
+mesh = SubResource("PlaneMesh_4hs1h")
+material = SubResource("StandardMaterial3D_vhqiw")
+
+[node name="Path27" type="CSGMesh3D" parent="Path"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.24988, 0, -2.74987)
+mesh = SubResource("PlaneMesh_4hs1h")
+material = SubResource("StandardMaterial3D_vhqiw")
+
+[node name="Path28" type="CSGMesh3D" parent="Path"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.74988, 0, -2.74987)
+mesh = SubResource("PlaneMesh_4hs1h")
+material = SubResource("StandardMaterial3D_vhqiw")
+
+[node name="Path29" type="CSGMesh3D" parent="Path"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.24988, 0, -2.74987)
+mesh = SubResource("PlaneMesh_4hs1h")
+material = SubResource("StandardMaterial3D_vhqiw")
+
+[node name="Path30" type="CSGMesh3D" parent="Path"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.74988, 0, -2.74987)
+mesh = SubResource("PlaneMesh_4hs1h")
+material = SubResource("StandardMaterial3D_vhqiw")
+
+[node name="Path31" type="CSGMesh3D" parent="Path"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.24988, 0, -2.74987)
+mesh = SubResource("PlaneMesh_4hs1h")
+material = SubResource("StandardMaterial3D_vhqiw")
+
+[node name="Path32" type="CSGMesh3D" parent="Path"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.74988, 0, -2.74987)
 mesh = SubResource("PlaneMesh_4hs1h")
 material = SubResource("StandardMaterial3D_vhqiw")
 

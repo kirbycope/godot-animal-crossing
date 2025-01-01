@@ -1,10 +1,5 @@
 [gd_scene load_steps=15 format=4 uid="uid://c1r8yiu4bgv4x"]
 
-[ext_resource type="Texture2D" uid="uid://cgbg4skvx071" path="res://assets/characters/cat00/b0.png" id="1_3gxk8"]
-[ext_resource type="Texture2D" uid="uid://kmm0v8rufqba" path="res://assets/characters/cat00/e.0.png" id="2_iaxte"]
-[ext_resource type="Texture2D" uid="uid://c7a6quwl356r3" path="res://assets/characters/cat00/cloth.png" id="3_v7uqw"]
-[ext_resource type="Texture2D" uid="uid://dwbl7nw7tgxhq" path="res://assets/characters/cat00/m.0.png" id="4_4r330"]
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fiy30"]
 resource_name = "b0.png"
 cull_mode = 2
@@ -127,17 +122,29 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_qm255")
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_sd0al"]
+load_path = "res://.godot/imported/b0.png-19ea6d9fcf5d01d67abaa4dcf793a55c.s3tc.ctex"
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1o3v0"]
-albedo_texture = ExtResource("1_3gxk8")
+albedo_texture = SubResource("CompressedTexture2D_sd0al")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nfmgo"]
+load_path = "res://.godot/imported/e.0.png-7b370fc6f7e69007f9c00f3f47524f94.s3tc.ctex"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ija0b"]
-albedo_texture = ExtResource("2_iaxte")
+albedo_texture = SubResource("CompressedTexture2D_nfmgo")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0ynfg"]
+load_path = "res://.godot/imported/cloth.png-972dc86e674d57f168e3cc509cb0a1da.s3tc.ctex"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t51x7"]
-albedo_texture = ExtResource("3_v7uqw")
+albedo_texture = SubResource("CompressedTexture2D_0ynfg")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_h02sr"]
+load_path = "res://.godot/imported/m.0.png-ab5cf4412f0061f65a5879d276938bbc.s3tc.ctex"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oamuo"]
-albedo_texture = ExtResource("4_4r330")
+albedo_texture = SubResource("CompressedTexture2D_h02sr")
 
 [node name="Cat00" type="Node3D"]
 transform = Transform3D(-0.01, 0, 8.74228e-10, 0, 0.01, 0, -8.74228e-10, 0, -0.01, 0, 0, 0)

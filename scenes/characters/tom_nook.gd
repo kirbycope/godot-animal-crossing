@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-const SPEED = 5.0
+const SPEED = 2.0
 const JUMP_VELOCITY = 4.5
 const RADIUS = 11.156 # Radius of the cylinder in meters
 
@@ -43,5 +43,3 @@ func _process(_delta: float) -> void:
 	if input_dir != Vector2.ZERO:
 		if animation_player.current_animation != "walking":
 			animation_player.play("walking")
-	elif animation_player.current_animation == "walking":
-		animation_player.stop()
