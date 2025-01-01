@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://72cow32vv642"]
+[gd_scene load_steps=39 format=4 uid="uid://72cow32vv642"]
 
 [ext_resource type="Texture2D" uid="uid://csxut7g4f6xlo" path="res://assets/buildings/train_int/etc_carpet.png" id="1_txnqq"]
 [ext_resource type="Texture2D" uid="uid://bsgbgqva0ahxo" path="res://assets/buildings/train_int/train_gl.png" id="2_cf1yt"]
@@ -24,12 +24,17 @@ background_mode = 2
 sky = SubResource("Sky_vdf41")
 tonemap_mode = 2
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_15gbq"]
+cull_mode = 1
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6cumm"]
+material = SubResource("StandardMaterial3D_15gbq")
+size = Vector3(17, 12, 33)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x7fic"]
 resource_name = "m_etc_carpet_mat"
 cull_mode = 2
-shading_mode = 0
-diffuse_mode = 3
-specular_mode = 1
 albedo_texture = ExtResource("1_txnqq")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_u7tvo"]
@@ -335,6 +340,12 @@ blend_shape_mode = 0
 
 [node name="TrainInt" type="Node3D"]
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, -2.5, 3.5, 61.1)
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.836514, -0.54767, 0.0173379, 0.00816768, 0.0191754, 0.999783, -0.547884, 0.836474, -0.0115673, 0, 0, 0)
 light_energy = 0.1
@@ -343,10 +354,12 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_3o4y4")
 
-[node name="AuxScene" type="Node3D" parent="."]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -25, 0, 15)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 4, 53)
+mesh = SubResource("BoxMesh_6cumm")
 
-[node name="Skeleton3D" type="Skeleton3D" parent="AuxScene"]
+[node name="Skeleton3D" type="Skeleton3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -25, 0, 15)
 bones/0/name = "idr_train"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
@@ -355,56 +368,51 @@ bones/0/position = Vector3(0, 0, 0)
 bones/0/rotation = Quaternion(0, 0, 0, 1)
 bones/0/scale = Vector3(1, 1, 1)
 
-[node name="vsn_mesh_0_" type="MeshInstance3D" parent="AuxScene/Skeleton3D"]
+[node name="vsn_mesh_0_" type="MeshInstance3D" parent="Skeleton3D"]
 mesh = SubResource("ArrayMesh_u7tvo")
 skeleton = NodePath("")
 
-[node name="vsn_mesh_1_" type="MeshInstance3D" parent="AuxScene/Skeleton3D"]
+[node name="vsn_mesh_1_" type="MeshInstance3D" parent="Skeleton3D"]
 mesh = SubResource("ArrayMesh_wrhyt")
 skeleton = NodePath("")
 
-[node name="vsn_mesh_2_" type="MeshInstance3D" parent="AuxScene/Skeleton3D"]
+[node name="vsn_mesh_2_" type="MeshInstance3D" parent="Skeleton3D"]
 visible = false
 mesh = SubResource("ArrayMesh_tfxtt")
 skeleton = NodePath("")
 
-[node name="vsn_mesh_3_" type="MeshInstance3D" parent="AuxScene/Skeleton3D"]
+[node name="vsn_mesh_3_" type="MeshInstance3D" parent="Skeleton3D"]
 mesh = SubResource("ArrayMesh_d5ins")
 skeleton = NodePath("")
 
-[node name="vsn_mesh_4_" type="MeshInstance3D" parent="AuxScene/Skeleton3D"]
+[node name="vsn_mesh_4_" type="MeshInstance3D" parent="Skeleton3D"]
 mesh = SubResource("ArrayMesh_k4jx3")
 skeleton = NodePath("")
 
-[node name="vsn_mesh_5_" type="MeshInstance3D" parent="AuxScene/Skeleton3D"]
+[node name="vsn_mesh_5_" type="MeshInstance3D" parent="Skeleton3D"]
 mesh = SubResource("ArrayMesh_u7pid")
 skeleton = NodePath("")
 
-[node name="vsn_mesh_6_" type="MeshInstance3D" parent="AuxScene/Skeleton3D"]
+[node name="vsn_mesh_6_" type="MeshInstance3D" parent="Skeleton3D"]
 mesh = SubResource("ArrayMesh_7o6v2")
 skeleton = NodePath("")
 
-[node name="vsn_mesh_7_" type="MeshInstance3D" parent="AuxScene/Skeleton3D"]
+[node name="vsn_mesh_7_" type="MeshInstance3D" parent="Skeleton3D"]
 mesh = SubResource("ArrayMesh_28mlx")
 skeleton = NodePath("")
 
-[node name="vsn_mesh_8_" type="MeshInstance3D" parent="AuxScene/Skeleton3D"]
+[node name="vsn_mesh_8_" type="MeshInstance3D" parent="Skeleton3D"]
 mesh = SubResource("ArrayMesh_k2rag")
 skeleton = NodePath("")
 
-[node name="vsn_mesh_9_" type="MeshInstance3D" parent="AuxScene/Skeleton3D"]
+[node name="vsn_mesh_9_" type="MeshInstance3D" parent="Skeleton3D"]
 mesh = SubResource("ArrayMesh_p3ojy")
 skeleton = NodePath("")
 
-[node name="vsn_mesh_10_" type="MeshInstance3D" parent="AuxScene/Skeleton3D"]
+[node name="vsn_mesh_10_" type="MeshInstance3D" parent="Skeleton3D"]
 mesh = SubResource("ArrayMesh_ouar4")
 skeleton = NodePath("")
 
-[node name="vsn_mesh_11_" type="MeshInstance3D" parent="AuxScene/Skeleton3D"]
+[node name="vsn_mesh_11_" type="MeshInstance3D" parent="Skeleton3D"]
 mesh = SubResource("ArrayMesh_g24sk")
 skeleton = NodePath("")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="AuxScene"]
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, -2.5, 3.5, 61.1)

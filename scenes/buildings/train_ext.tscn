@@ -105,10 +105,10 @@ _surfaces = [{
 
 [node name="TrainExt" type="Node3D"]
 
-[node name="AuxScene" type="Node3D" parent="."]
-transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, -0.2, -0.25)
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
-[node name="Skeleton3D" type="Skeleton3D" parent="AuxScene"]
+[node name="Skeleton3D" type="Skeleton3D" parent="."]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, -0.2, -0.25)
 bones/0/name = "root"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
@@ -131,19 +131,17 @@ bones/2/position = Vector3(0, 32, 60)
 bones/2/rotation = Quaternion(0, 0, 0, 1)
 bones/2/scale = Vector3(1, 1, 1)
 
-[node name="robj" type="MeshInstance3D" parent="AuxScene/Skeleton3D"]
+[node name="robj" type="MeshInstance3D" parent="Skeleton3D"]
 mesh = SubResource("ArrayMesh_2hfil")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_mgup2")
 
-[node name="sobj" type="MeshInstance3D" parent="AuxScene/Skeleton3D"]
+[node name="sobj" type="MeshInstance3D" parent="Skeleton3D"]
 layers = 3
 mesh = SubResource("ArrayMesh_2dr07")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_tcjir")
 
-[node name="ext" type="MeshInstance3D" parent="AuxScene/Skeleton3D"]
+[node name="ext" type="MeshInstance3D" parent="Skeleton3D"]
 visible = false
 mesh = SubResource("ArrayMesh_ccsht")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
