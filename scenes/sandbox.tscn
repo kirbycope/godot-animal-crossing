@@ -1,0 +1,229 @@
+[gd_scene load_steps=16 format=3 uid="uid://cl4gth1mqs7su"]
+
+[ext_resource type="Texture2D" uid="uid://bwtxwwr1ccdsa" path="res://assets/textures/grass_01.png" id="1_vi27p"]
+[ext_resource type="PackedScene" uid="uid://c1pw20be6rpev" path="res://scenes/characters/tom_nook.tscn" id="2_a720x"]
+[ext_resource type="PackedScene" uid="uid://q0bo65ba0rxu" path="res://scenes/buildings/railroad_crossing.tscn" id="3_k31aa"]
+[ext_resource type="Texture2D" uid="uid://rr31qinyml12" path="res://assets/textures/cliff.png" id="4_0ekhv"]
+[ext_resource type="Texture2D" uid="uid://yqph0wq70bcl" path="res://assets/textures/grass_01_a.png" id="5_ogsp6"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0qbgn"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_3fgjk"]
+sky_material = SubResource("ProceduralSkyMaterial_0qbgn")
+
+[sub_resource type="Environment" id="Environment_hbafa"]
+background_mode = 2
+sky = SubResource("Sky_3fgjk")
+tonemap_mode = 2
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_3uv0a"]
+height = 100.0
+radius = 11.156
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ethh5"]
+albedo_texture = ExtResource("1_vi27p")
+uv1_scale = Vector3(3, 3, 3)
+uv1_triplanar = true
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_o6gud"]
+material = SubResource("StandardMaterial3D_ethh5")
+top_radius = 11.156
+bottom_radius = 11.156
+height = 100.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_epms5"]
+size = Vector2(1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s3eeh"]
+albedo_texture = ExtResource("4_0ekhv")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_crt87"]
+size = Vector2(0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nsth7"]
+albedo_texture = ExtResource("1_vi27p")
+normal_enabled = true
+normal_texture = ExtResource("5_ogsp6")
+uv1_scale = Vector3(2, 2, 2)
+uv1_offset = Vector3(0.5, 0, 0.5)
+uv1_triplanar = true
+
+[node name="Sandbox" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_hbafa")
+
+[node name="TomNook" parent="." instance=ExtResource("2_a720x")]
+transform = Transform3D(0.01, 0, 0, 0, 0.00984808, 0.00173648, 0, -0.00173648, 0.00984808, 0, 11.156, 0)
+
+[node name="Camera3D" type="Camera3D" parent="TomNook"]
+transform = Transform3D(100, 0, 0, 0, 81.9152, 57.3577, 0, -57.3577, 81.9152, 0, 76, 76)
+
+[node name="World" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_3uv0a")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_o6gud")
+skeleton = NodePath("../..")
+
+[node name="Surface" type="Node3D" parent="World"]
+
+[node name="RailroadCrossing" parent="World/Surface" instance=ExtResource("3_k31aa")]
+transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 11.1855, 0)
+
+[node name="Cliff" type="Node3D" parent="World/Surface"]
+transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, -2, 11.11, -1)
+
+[node name="Cliff1" type="CSGMesh3D" parent="World/Surface/Cliff"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 1.5, 0.5, 0)
+use_collision = true
+mesh = SubResource("PlaneMesh_epms5")
+material = SubResource("StandardMaterial3D_s3eeh")
+
+[node name="Cliff2" type="CSGMesh3D" parent="World/Surface/Cliff"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.5, 0.5, 0)
+use_collision = true
+mesh = SubResource("PlaneMesh_epms5")
+material = SubResource("StandardMaterial3D_s3eeh")
+
+[node name="Cliff3" type="CSGMesh3D" parent="World/Surface/Cliff"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.5, 0.5, 0)
+use_collision = true
+mesh = SubResource("PlaneMesh_epms5")
+material = SubResource("StandardMaterial3D_s3eeh")
+
+[node name="Cliff4" type="CSGMesh3D" parent="World/Surface/Cliff"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -1.5, 0.5, 0)
+use_collision = true
+mesh = SubResource("PlaneMesh_epms5")
+material = SubResource("StandardMaterial3D_s3eeh")
+
+[node name="Cliff5" type="CSGMesh3D" parent="World/Surface/Cliff"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 5.5, 0.5, 0)
+use_collision = true
+mesh = SubResource("PlaneMesh_epms5")
+material = SubResource("StandardMaterial3D_s3eeh")
+
+[node name="Cliff6" type="CSGMesh3D" parent="World/Surface/Cliff"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 4.5, 0.5, 0)
+use_collision = true
+mesh = SubResource("PlaneMesh_epms5")
+material = SubResource("StandardMaterial3D_s3eeh")
+
+[node name="Cliff7" type="CSGMesh3D" parent="World/Surface/Cliff"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 3.5, 0.5, 0)
+use_collision = true
+mesh = SubResource("PlaneMesh_epms5")
+material = SubResource("StandardMaterial3D_s3eeh")
+
+[node name="Cliff8" type="CSGMesh3D" parent="World/Surface/Cliff"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 2.5, 0.5, 0)
+use_collision = true
+mesh = SubResource("PlaneMesh_epms5")
+material = SubResource("StandardMaterial3D_s3eeh")
+
+[node name="Grass01a65" type="CSGMesh3D" parent="World/Surface/Cliff"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.74952, 1, -0.25018)
+use_collision = true
+mesh = SubResource("PlaneMesh_crt87")
+material = SubResource("StandardMaterial3D_nsth7")
+
+[node name="Grass01a66" type="CSGMesh3D" parent="World/Surface/Cliff"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.24952, 1, -0.25018)
+use_collision = true
+mesh = SubResource("PlaneMesh_crt87")
+material = SubResource("StandardMaterial3D_nsth7")
+
+[node name="Grass01a67" type="CSGMesh3D" parent="World/Surface/Cliff"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.749523, 1, -0.25018)
+use_collision = true
+mesh = SubResource("PlaneMesh_crt87")
+material = SubResource("StandardMaterial3D_nsth7")
+
+[node name="Grass01a68" type="CSGMesh3D" parent="World/Surface/Cliff"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.249523, 1, -0.25018)
+use_collision = true
+mesh = SubResource("PlaneMesh_crt87")
+material = SubResource("StandardMaterial3D_nsth7")
+
+[node name="Grass01a69" type="CSGMesh3D" parent="World/Surface/Cliff"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.250477, 1, -0.25018)
+use_collision = true
+mesh = SubResource("PlaneMesh_crt87")
+material = SubResource("StandardMaterial3D_nsth7")
+
+[node name="Grass01a70" type="CSGMesh3D" parent="World/Surface/Cliff"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.750477, 1, -0.25018)
+use_collision = true
+mesh = SubResource("PlaneMesh_crt87")
+material = SubResource("StandardMaterial3D_nsth7")
+
+[node name="Grass01a71" type="CSGMesh3D" parent="World/Surface/Cliff"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25048, 1, -0.25018)
+use_collision = true
+mesh = SubResource("PlaneMesh_crt87")
+material = SubResource("StandardMaterial3D_nsth7")
+
+[node name="Grass01a72" type="CSGMesh3D" parent="World/Surface/Cliff"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75048, 1, -0.25018)
+use_collision = true
+mesh = SubResource("PlaneMesh_crt87")
+material = SubResource("StandardMaterial3D_nsth7")
+
+[node name="Grass01a73" type="CSGMesh3D" parent="World/Surface/Cliff"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25048, 1, -0.25018)
+use_collision = true
+mesh = SubResource("PlaneMesh_crt87")
+material = SubResource("StandardMaterial3D_nsth7")
+
+[node name="Grass01a74" type="CSGMesh3D" parent="World/Surface/Cliff"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.75048, 1, -0.25018)
+use_collision = true
+mesh = SubResource("PlaneMesh_crt87")
+material = SubResource("StandardMaterial3D_nsth7")
+
+[node name="Grass01a75" type="CSGMesh3D" parent="World/Surface/Cliff"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.25048, 1, -0.25018)
+use_collision = true
+mesh = SubResource("PlaneMesh_crt87")
+material = SubResource("StandardMaterial3D_nsth7")
+
+[node name="Grass01a76" type="CSGMesh3D" parent="World/Surface/Cliff"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.75048, 1, -0.25018)
+use_collision = true
+mesh = SubResource("PlaneMesh_crt87")
+material = SubResource("StandardMaterial3D_nsth7")
+
+[node name="Grass01a77" type="CSGMesh3D" parent="World/Surface/Cliff"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.25048, 1, -0.25018)
+use_collision = true
+mesh = SubResource("PlaneMesh_crt87")
+material = SubResource("StandardMaterial3D_nsth7")
+
+[node name="Grass01a78" type="CSGMesh3D" parent="World/Surface/Cliff"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.75048, 1, -0.25018)
+use_collision = true
+mesh = SubResource("PlaneMesh_crt87")
+material = SubResource("StandardMaterial3D_nsth7")
+
+[node name="Grass01a79" type="CSGMesh3D" parent="World/Surface/Cliff"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.25048, 1, -0.25018)
+use_collision = true
+mesh = SubResource("PlaneMesh_crt87")
+material = SubResource("StandardMaterial3D_nsth7")
+
+[node name="Grass01a80" type="CSGMesh3D" parent="World/Surface/Cliff"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.75048, 1, -0.25018)
+use_collision = true
+mesh = SubResource("PlaneMesh_crt87")
+material = SubResource("StandardMaterial3D_nsth7")
