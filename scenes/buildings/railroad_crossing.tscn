@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://q0bo65ba0rxu"]
+[gd_scene load_steps=13 format=4 uid="uid://q0bo65ba0rxu"]
 
 [ext_resource type="Texture2D" uid="uid://dqsgmaoa5i3da" path="res://assets/buildings/railroad-crossing/railroad_crossing_tex_border_JP.png" id="1_5eg3v"]
 [ext_resource type="Texture2D" uid="uid://c26su7uoqhp8i" path="res://assets/buildings/railroad-crossing/railroad_crossing_tex_lamp.png" id="2_3j77o"]
@@ -116,7 +116,13 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ejhhf")
 
-[node name="RailroadCrossing" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_iiudv"]
+size = Vector3(0.3, 0.8, 0.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_50vh2"]
+size = Vector3(1.2, 0.2, 0.1)
+
+[node name="RailroadCrossing" type="StaticBody3D"]
 
 [node name="vsn_mesh_0__mesh_0_" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0)
@@ -132,3 +138,11 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0)
 mesh = SubResource("ArrayMesh_cae42")
 skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.65, 0.4, -0.2)
+shape = SubResource("BoxShape3D_iiudv")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0.1, -0.25)
+shape = SubResource("BoxShape3D_50vh2")

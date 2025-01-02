@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<COLLADA version="1.4.1" xmlns="http://www.collada.org/2005/11/COLLADASchema">
+  <asset>
+    <created>2025-01-01T10:14:24Z</created>
+    <modified>2025-01-01T10:14:24Z</modified>
+  </asset>
+  <library_images />
+  <library_materials>
+    <material id="m_bg_forest00_mat_id" name="m_bg_forest00_mat">
+      <instance_effect url="#eff_m_bg_forest00_id" />
+    </material>
+  </library_materials>
+  <library_effects>
+    <effect id="eff_m_bg_forest00_id" name="eff_m_bg_forest00">
+      <profile_COMMON>
+        <newparam sid="img_surface">
+          <surface type="2D">
+            <init_from>tex_EX_enkei_id</init_from>
+            <format>PNG</format>
+          </surface>
+        </newparam>
+        <newparam sid="img_sampler">
+          <sampler2D>
+            <source>img_surface</source>
+            <wrap_s>WRAP</wrap_s>
+            <wrap_t>CLAMP</wrap_t>
+            <minfilter>NEAREST_MIPMAP_NEAREST</minfilter>
+            <magfilter>LINEAR</magfilter>
+            <mipfilter>LINEAR</mipfilter>
+          </sampler2D>
+        </newparam>
+        <technique sid="img_technique">
+          <phong>
+            <emission>
+              <color>0 0 0 1</color>
+            </emission>
+            <ambient>
+              <color>0 0 0 1</color>
+            </ambient>
+            <diffuse>
+              <texture texture="img_sampler" texcoord="uv" />
+            </diffuse>
+            <specular>
+              <color>1 1 1 1</color>
+            </specular>
+          </phong>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_geometries>
+    <geometry id="mesh_0_pPlane13_id" name="mesh_0_pPlane13">
+      <mesh>
+        <source id="mesh_0_pPlane13_position_id" name="mesh_0_pPlane13_position">
+          <float_array id="mesh_0_pPlane13_position_array_id" count="210">-257.162 92.9575 -27.99999 -257.162 28.9575 -27.99999 -108 51.82985 -27.99999 -648.377 58.20835 -27.99998 -108 115.83 -27.99999 -648.377 122.2085 -27.99998 52.00002 56.56535 -28 52.00002 120.5655 -28 212 98.5485 -28 212 34.54843 -28 404 74.50771 -28.00001 404 10.5077 -28.00001 780 47.54475 -28.00002 780 111.545 -28.00002 -309.162 100.393 -60.00015 -309.162 36.39315 -60.00015 -160 39.2783 -60.00008 -700.377 70.20835 -60.00034 -160 103.2785 -60.00008 -700.377 134.2085 -60.00034 2.19345E-05 58.4002 -60 2.19345E-05 122.4 -60 160 115.1335 -59.99993 160 51.13324 -59.99993 352 86.50771 -59.99984 352 22.5077 -59.99984 728 59.54475 -59.99966 728 123.545 -59.99966 -128 112.0355 -96.00005 -396.883 92.74695 -96.00009 -128 69.1273 -96.00004 -396.883 135.655 -96.0001 32.00003 97.65715 -96.00002 32.00003 140.5655 -96.00002 -668.377 99.3002 -96.00014 -668.377 142.2085 -96.00015 192 125.5235 -95.99999 192 82.6155 -95.99998 384 94.50771 -95.99995 384 51.59946 -95.99994 760 67.5447 -95.99989 760 131.5445 -95.99989 -309.162 40.2965 20.00001 -309.162 -23.70355 20 -160 -14.55657 20 -700.377 6.208349 20 -160 49.4435 20.00001 -700.377 70.2085 20.00001 2.28882E-05 4.56535 20 2.47955E-05 68.5655 20.00001 160 46.5485 20.00001 160 -17.45157 20 352 22.5077 20 352 -41.4923 20 728 -4.45525 20 728 59.545 20.00001 -291.519 64.166 0 -291.519 0.16605 0 -142.357 9.44342 0 -682.734 30.20835 0 -142.357 73.4435 0 -682.734 94.2085 0 17.64303 28.5653 0 17.64303 92.5655 0 177.643 70.5485 0 177.643 6.548425 0 369.643 46.5077 0 369.643 -17.4923 0 745.643 19.54475 0 745.643 83.545 0</float_array>
+          <technique_common>
+            <accessor source="#mesh_0_pPlane13_position_array_id" count="70" stride="3">
+              <param name="X" type="float" />
+              <param name="Y" type="float" />
+              <param name="Z" type="float" />
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="mesh_0_pPlane13_uv0_id" name="mesh_0_pPlane13_uv0">
+          <float_array id="mesh_0_pPlane13_uv0_array_id" count="140">-1.33833 0.993119 -1.33833 0 -0.489316 0 -3.56508 0 -0.489316 0.993119 -3.56508 0.993119 0.421387 0 0.421387 0.993119 1.33209 0.993119 1.33209 0 2.42493 0.993119 2.42493 0 4.56508 0 4.56508 0.993119 -2.02493 0.993421 -2.02493 0 -0.858814 0 -5.08335 0 -0.858814 0.993421 -5.08335 0.993421 0.392026 0 0.392026 0.993421 1.64287 0.993421 1.64287 0 3.14388 0.993421 3.14388 0 6.08335 0 6.08335 0.993421 -0.939586 0.991324 -3.1666 0 -0.939586 0 -3.1666 0.991324 0.385608 0 0.385608 0.991324 -5.41524 0 -5.41524 0.991324 1.7108 0.991324 1.7108 0 3.30103 0.991324 3.30103 0 6.41524 0 6.41524 0.991324 -1.29107 0.988091 -1.29107 0 -0.463883 0 -3.46059 0 -0.463883 0.988091 -3.46059 0.988091 0.423408 0 0.423408 0.988091 1.3107 0.988091 1.3107 0 2.37545 0.988091 2.37545 0 4.46059 0 4.46059 0.988091 -1.46208 0.991728 -1.46208 0 -0.555915 0 -3.83874 0 -0.555915 0.991728 -3.83874 0.991728 0.416095 0 0.416095 0.991728 1.38811 0.991728 1.38811 0 2.55452 0.991728 2.55452 0 4.83874 0 4.83874 0.991728</float_array>
+          <technique_common>
+            <accessor source="#mesh_0_pPlane13_uv0_array_id" count="70" stride="2">
+              <param name="S" type="float" />
+              <param name="T" type="float" />
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="mesh_0_pPlane13_color_id" name="mesh_0_pPlane13_color">
+          <float_array id="mesh_0_pPlane13_color_array_id" count="280">1 1 1 1 1 1 1 0.5019608 1 1 1 0.5019608 1 1 1 0.5019608 1 1 1 1 1 1 1 1 1 1 1 0.5019608 1 1 1 1 1 1 1 1 1 1 1 0.5019608 1 1 1 1 1 1 1 0.5019608 1 1 1 0.5019608 1 1 1 1 1 1 1 1 1 1 1 0.5019608 1 1 1 0.5019608 1 1 1 0.5019608 1 1 1 1 1 1 1 1 1 1 1 0.5019608 1 1 1 1 1 1 1 1 1 1 1 0.5019608 1 1 1 1 1 1 1 0.5019608 1 1 1 0.5019608 1 1 1 1 1 1 1 1 1 1 1 0.5019608 1 1 1 0.5019608 1 1 1 1 1 1 1 0.5019608 1 1 1 1 1 1 1 0.5019608 1 1 1 1 1 1 1 1 1 1 1 0.5019608 1 1 1 1 1 1 1 0.5019608 1 1 1 0.5019608 1 1 1 1 1 1 1 1 1 1 1 0.5019608 1 1 1 0.5019608 1 1 1 0.5019608 1 1 1 1 1 1 1 1 1 1 1 0.5019608 1 1 1 1 1 1 1 1 1 1 1 0.5019608 1 1 1 1 1 1 1 0.5019608 1 1 1 0.5019608 1 1 1 1 1 1 1 1 1 1 1 0.5019608 1 1 1 0.5019608 1 1 1 0.5019608 1 1 1 1 1 1 1 1 1 1 1 0.5019608 1 1 1 1 1 1 1 1 1 1 1 0.5019608 1 1 1 1 1 1 1 0.5019608 1 1 1 0.5019608 1 1 1 1</float_array>
+          <technique_common>
+            <accessor source="#mesh_0_pPlane13_color_array_id" count="70" stride="4">
+              <param name="R" type="float" />
+              <param name="G" type="float" />
+              <param name="B" type="float" />
+              <param name="A" type="float" />
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="mesh_0_pPlane13_vertices_id">
+          <input semantic="POSITION" source="#mesh_0_pPlane13_position_id" />
+        </vertices>
+        <triangles material="m_bg_forest00" count="60">
+          <input semantic="VERTEX" source="#mesh_0_pPlane13_vertices_id" offset="0" />
+          <input semantic="COLOR" source="#mesh_0_pPlane13_color_id" offset="0" />
+          <input semantic="TEXCOORD" source="#mesh_0_pPlane13_uv0_id" offset="0" set="0" />
+          <p>0 1 2 0 3 1 0 2 4 0 5 3 2 6 4 6 7 4 6 8 7 6 9 8 9 10 8 9 11 10 11 12 10 12 13 10 14 15 16 14 17 15 14 16 18 14 19 17 16 20 18 20 21 18 20 22 21 20 23 22 23 24 22 23 25 24 25 26 24 26 27 24 28 29 30 28 31 29 28 30 32 28 32 33 31 34 29 31 35 34 32 36 33 32 37 36 37 38 36 37 39 38 39 40 38 40 41 38 42 43 44 42 45 43 42 44 46 42 47 45 44 48 46 48 49 46 48 50 49 48 51 50 51 52 50 51 53 52 53 54 52 54 55 52 56 57 58 56 59 57 56 58 60 56 61 59 58 62 60 62 63 60 62 64 63 62 65 64 65 66 64 65 67 66 67 68 66 68 69 66</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="vs_bg_forest_id" name="vs_bg_forest">
+      <node id="vsn_mesh_0_pPlane13_id" name="vsn_mesh_0_pPlane13" type="NODE">
+        <matrix>1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
+        <instance_geometry url="#mesh_0_pPlane13_id">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="m_bg_forest00" target="#m_bg_forest00_mat_id" />
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#vs_bg_forest_id" />
+  </scene>
+</COLLADA>

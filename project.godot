@@ -11,9 +11,15 @@ config_version=5
 [application]
 
 config/name="Animal Crossing"
-run/main_scene="res://scenes/main.tscn"
+run/main_scene="res://scenes/main/main.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.png"
+
+[autoload]
+
+Globals="*res://scenes/globals.gd"
+Controls="*res://addons/3d_player_controller/controls.gd"
+States="*res://addons/3d_player_controller/states/states.gd"
 
 [display]
 
