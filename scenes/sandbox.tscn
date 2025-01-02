@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://cl4gth1mqs7su"]
+[gd_scene load_steps=17 format=3 uid="uid://cl4gth1mqs7su"]
 
-[ext_resource type="Texture2D" uid="uid://bwtxwwr1ccdsa" path="res://assets/textures/grass_01.png" id="1_vi27p"]
 [ext_resource type="PackedScene" uid="uid://c1pw20be6rpev" path="res://scenes/characters/tom_nook.tscn" id="2_a720x"]
 [ext_resource type="PackedScene" uid="uid://q0bo65ba0rxu" path="res://scenes/buildings/railroad_crossing.tscn" id="3_k31aa"]
-[ext_resource type="Texture2D" uid="uid://rr31qinyml12" path="res://assets/textures/cliff.png" id="4_0ekhv"]
-[ext_resource type="Texture2D" uid="uid://yqph0wq70bcl" path="res://assets/textures/grass_01_a.png" id="5_ogsp6"]
+[ext_resource type="Texture2D" uid="uid://lqfqebnx2emq" path="res://assets/textures/tex_grass_a.png" id="3_lbypm"]
+[ext_resource type="Texture2D" uid="uid://dhqbkkaoto5vm" path="res://assets/world/bg/tex_cliff01.png" id="3_yifk2"]
+[ext_resource type="Texture2D" uid="uid://b8r82o4kimfyy" path="res://assets/world/bg/tex_cliff01_n.png" id="4_06l02"]
+[ext_resource type="Texture2D" uid="uid://drg1chil3gc34" path="res://assets/textures/tex_flocky_grd.png" id="4_f0mwf"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0qbgn"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -23,7 +24,9 @@ height = 100.0
 radius = 11.156
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ethh5"]
-albedo_texture = ExtResource("1_vi27p")
+albedo_texture = ExtResource("3_lbypm")
+normal_enabled = true
+normal_texture = ExtResource("4_f0mwf")
 uv1_scale = Vector3(3, 3, 3)
 uv1_triplanar = true
 
@@ -37,15 +40,17 @@ height = 100.0
 size = Vector2(1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s3eeh"]
-albedo_texture = ExtResource("4_0ekhv")
+albedo_texture = ExtResource("3_yifk2")
+normal_enabled = true
+normal_texture = ExtResource("4_06l02")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_crt87"]
 size = Vector2(0.5, 0.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nsth7"]
-albedo_texture = ExtResource("1_vi27p")
+albedo_texture = ExtResource("3_lbypm")
 normal_enabled = true
-normal_texture = ExtResource("5_ogsp6")
+normal_texture = ExtResource("4_f0mwf")
 uv1_scale = Vector3(2, 2, 2)
 uv1_offset = Vector3(0.5, 0, 0.5)
 uv1_triplanar = true

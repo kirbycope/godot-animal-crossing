@@ -17,6 +17,8 @@ func _ready():
 func reveal():
 	tween = create_tween()
 	tween.tween_property(shader_material, "shader_parameter/progress", 1.0, 2.0).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
+	await get_tree().create_timer(2.0).timeout
+	$"../RichTextLabel".visible = true
 
 
 func cover():

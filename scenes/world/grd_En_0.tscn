@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://5hjsnmhfl2e2"]
+
+[ext_resource type="PackedScene" uid="uid://btjovi4vx0bh8" path="res://assets/world/bg/grd_En_0.dae" id="1_vgby4"]
+
+[node name="GrdEn0" type="Node3D"]
+
+[node name="grd_En_0" parent="." instance=ExtResource("1_vgby4")]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
