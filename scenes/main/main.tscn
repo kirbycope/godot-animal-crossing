@@ -1182,6 +1182,10 @@ use_collision = true
 mesh = SubResource("PlaneMesh_w8mlu")
 material = SubResource("StandardMaterial3D_iomfq")
 
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.999966, -0.00472976, 0.00675535, 0, 0.819174, 0.573545, -0.00824654, -0.573526, 0.819146, -0.00806358, 0.00950076, -1.21023)
+script = ExtResource("10_0yfds")
+
 [node name="Path3D" type="Path3D" parent="."]
 curve = SubResource("Curve3D_ui7w4")
 script = ExtResource("10_0pxe5")
@@ -1192,13 +1196,6 @@ rotation_mode = 4
 
 [node name="TomNook" parent="Path3D/PathFollow3D" instance=ExtResource("11_p0ied")]
 transform = Transform3D(-0.01, 0, 8.74228e-10, 0, 0.01, 0, -8.74228e-10, 0, -0.01, 0, 0, 0)
-
-[node name="CameraMount" type="Node3D" parent="Path3D/PathFollow3D/TomNook"]
-transform = Transform3D(99.9966, 0, -0.824654, 0, 99.992, 0, 0.824654, 0, 99.9966, 0, 0, 0)
-
-[node name="Camera3D" type="Camera3D" parent="Path3D/PathFollow3D/TomNook/CameraMount"]
-transform = Transform3D(1, 0, 0, 0, 0.819152, 0.573576, 0, -0.573576, 0.819152, -9.31323e-10, 0.95, 1)
-script = ExtResource("10_0yfds")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_qerjm")

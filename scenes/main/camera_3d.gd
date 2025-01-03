@@ -13,10 +13,8 @@ func _ready():
 
 func _process(_delta):
 	# Get parent's (TomNook's) position
-	var target_pos = get_parent().global_position
+	var tom_nook = $"../Path3D/PathFollow3D/TomNook"
+	var target_pos =tom_nook.global_position
 	
 	# Add our global offset to the target position
 	global_position = target_pos + offset
-	
-	# Keep the original orientation
-	global_transform.basis = initial_basis
