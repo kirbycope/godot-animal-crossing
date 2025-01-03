@@ -8,17 +8,18 @@ const RADIUS = 11.156 # Radius of the cylinder in meters
 
 
 func _physics_process(delta: float) -> void:
+
 	# Add gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
-	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-
 	# Get the input direction.
 	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-
+	
+	# Animate movement
+	if input_dir != Vector2.ZERO:
+		if animation_player.current_animation != "walking":
+			animation_player.play("walking")
 	# Handle forward/backward movement by rotating the world around the y-axis.
 	if input_dir.y != 0:
 		# Calculate the rotation angle based on input and speed.
@@ -34,12 +35,3 @@ func _physics_process(delta: float) -> void:
 
 	# Apply the vertical and horizontal movement.
 	move_and_slide()
-
-
-func _process(_delta: float) -> void:
-	# Animate movement
-	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-
-	if input_dir != Vector2.ZERO:
-		if animation_player.current_animation != "walking":
-			animation_player.play("walking")

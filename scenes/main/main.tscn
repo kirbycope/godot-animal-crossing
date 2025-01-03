@@ -1,11 +1,14 @@
-[gd_scene load_steps=33 format=3 uid="uid://c3n0ytq5oyds4"]
+[gd_scene load_steps=36 format=3 uid="uid://c3n0ytq5oyds4"]
 
 [ext_resource type="AudioStream" uid="uid://bg2h3mppvdg54" path="res://assets/sounds/music/main_theme.mp3" id="1_wjoo1"]
+[ext_resource type="Script" path="res://scenes/main/main.gd" id="1_xg0kj"]
 [ext_resource type="PackedScene" uid="uid://ck7v781qwvkf7" path="res://scenes/buildings/fobj_fence.tscn" id="2_md6av"]
 [ext_resource type="PackedScene" uid="uid://cpb10j72eta1a" path="res://scenes/props/bulletin_board.tscn" id="2_uwyae"]
 [ext_resource type="PackedScene" uid="uid://gnculwyvxiec" path="res://scenes/buildings/station_a.tscn" id="2_x6vd4"]
+[ext_resource type="Shader" path="res://scenes/sandbox_sky.gdshader" id="3_2oyhw"]
 [ext_resource type="PackedScene" uid="uid://q0bo65ba0rxu" path="res://scenes/buildings/railroad_crossing.tscn" id="3_de2hy"]
 [ext_resource type="PackedScene" uid="uid://ct21r1mn6qiim" path="res://scenes/buildings/train_ext.tscn" id="4_ix02a"]
+[ext_resource type="Texture2D" uid="uid://2y0ueogjxg0q" path="res://assets/textures/tex_cloud.png" id="4_r3h7n"]
 [ext_resource type="PackedScene" uid="uid://curuix0pfqsig" path="res://scenes/props/tree.tscn" id="6_yudb2"]
 [ext_resource type="PackedScene" uid="uid://bq33wxsathuhn" path="res://scenes/world/robj_En_0.tscn" id="7_5vyda"]
 [ext_resource type="Texture2D" uid="uid://cy3y7bd4jtnw5" path="res://assets/textures/path_01.png" id="7_gjqog"]
@@ -23,12 +26,20 @@
 [ext_resource type="Script" path="res://scenes/main/texture_rect.gd" id="15_pj7xd"]
 [ext_resource type="Script" path="res://scenes/main/rich_text_label.gd" id="21_j73h2"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_u7ijy"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3vw8w"]
+shader = ExtResource("3_2oyhw")
+shader_parameter/sky_top_color = Color(0.2, 0.4, 1, 1)
+shader_parameter/sky_horizon_color = Color(0.4, 0.6, 1, 1)
+shader_parameter/horizon_blur = 0.5
+shader_parameter/cloud_color = Color(1, 1, 1, 1)
+shader_parameter/cloud_scale = 1.0
+shader_parameter/cloud_density = 0.66
+shader_parameter/cloud_speed = -0.01
+shader_parameter/time = 0.0
+shader_parameter/noise_texture = ExtResource("4_r3h7n")
 
 [sub_resource type="Sky" id="Sky_tvs12"]
-sky_material = SubResource("ProceduralSkyMaterial_u7ijy")
+sky_material = SubResource("ShaderMaterial_3vw8w")
 
 [sub_resource type="Environment" id="Environment_gmg8k"]
 background_mode = 2
@@ -74,6 +85,7 @@ shader_parameter/center = Vector2(0.5, 0.5)
 shader_parameter/smoothness = 0.1
 
 [node name="Main" type="Node3D"]
+script = ExtResource("1_xg0kj")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_wjoo1")
@@ -117,7 +129,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 0, -1.11527)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9, 0, -1.5)
 
 [node name="StationA" parent="." instance=ExtResource("2_x6vd4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.001, -1.2)
 
 [node name="Track" type="Node3D" parent="."]
 

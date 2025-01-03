@@ -7,4 +7,3 @@ func _process(delta: float) -> void:
 	get_node("PathFollow3D").progress += delta * move_speed
 	if $PathFollow3D/TomNook/AnimationPlayer.current_animation != "walking":
 		$PathFollow3D/TomNook/AnimationPlayer.play("walking")
-	#$"../CameraMount".global_position = $PathFollow3D/TomNook.global_position

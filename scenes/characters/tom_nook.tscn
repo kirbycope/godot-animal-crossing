@@ -1,7 +1,6 @@
-[gd_scene load_steps=16 format=4 uid="uid://c1pw20be6rpev"]
+[gd_scene load_steps=15 format=4 uid="uid://c1pw20be6rpev"]
 
 [ext_resource type="Texture2D" uid="uid://cf5xc5cv04nuk" path="res://assets/characters/tom_nook/tom_nook_b0.png" id="1_x17uc"]
-[ext_resource type="Script" path="res://scenes/characters/tom_nook.gd" id="1_yqtt4"]
 [ext_resource type="Texture2D" uid="uid://dsrkhw80x3v40" path="res://assets/characters/tom_nook/tom_nook_e_mirror.png" id="3_76prg"]
 [ext_resource type="Texture2D" uid="uid://d0t2pnmtbwqsn" path="res://assets/characters/tom_nook/tom_nook_cloth.png" id="3_kuo70"]
 
@@ -238,7 +237,6 @@ _data = {
 
 [node name="TomNook" type="CharacterBody3D"]
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
-script = ExtResource("1_yqtt4")
 
 [node name="Armature" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0)
