@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=4 uid="uid://q0bo65ba0rxu"]
 
 [ext_resource type="Texture2D" uid="uid://dqsgmaoa5i3da" path="res://assets/buildings/railroad-crossing/railroad_crossing_tex_border_JP.png" id="1_5eg3v"]
-[ext_resource type="Texture2D" uid="uid://c26su7uoqhp8i" path="res://assets/buildings/railroad-crossing/railroad_crossing_tex_lamp.png" id="2_3j77o"]
+[ext_resource type="Texture2D" uid="uid://dkkjb1ggo1ymj" path="res://assets/buildings/railroad-crossing/railroad_crossing_tex_lamp_1.png" id="2_hjb1x"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sp0f5"]
 resource_name = "m_crossing_mat"
@@ -79,8 +79,8 @@ shadow_mesh = SubResource("ArrayMesh_7354i")
 resource_name = "m_lamp_mat"
 transparency = 4
 cull_mode = 2
-albedo_texture = ExtResource("2_3j77o")
-roughness = 0.0
+albedo_texture = ExtResource("2_hjb1x")
+uv1_scale = Vector3(2, 0.5, 1)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_ejhhf"]
 _surfaces = [{

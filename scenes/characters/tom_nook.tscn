@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=4 uid="uid://c1pw20be6rpev"]
+[gd_scene load_steps=16 format=4 uid="uid://c1pw20be6rpev"]
 
 [ext_resource type="Texture2D" uid="uid://cf5xc5cv04nuk" path="res://assets/characters/tom_nook/tom_nook_b0.png" id="1_x17uc"]
 [ext_resource type="Texture2D" uid="uid://dsrkhw80x3v40" path="res://assets/characters/tom_nook/tom_nook_e_mirror.png" id="3_76prg"]
 [ext_resource type="Texture2D" uid="uid://d0t2pnmtbwqsn" path="res://assets/characters/tom_nook/tom_nook_cloth.png" id="3_kuo70"]
+[ext_resource type="Script" path="res://addons/3d_player_controller/virtual_controller_3d.gd" id="4_k52ie"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f0045"]
 resource_name = "b0"
@@ -401,6 +402,12 @@ skin = SubResource("Skin_eioxg")
 [node name="mesh_2_" type="MeshInstance3D" parent="Armature/Skeleton3D"]
 mesh = SubResource("ArrayMesh_cga7w")
 skin = SubResource("Skin_eioxg")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VirtualController3D" type="Node2D" parent="CanvasLayer"]
+process_mode = 4
+script = ExtResource("4_k52ie")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 24, 0)

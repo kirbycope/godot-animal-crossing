@@ -7,11 +7,20 @@ const RADIUS = 11.156 # Radius of the cylinder in meters
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
+func _ready() -> void:
+
+	# Enable virtual (touch) controller
+	$CanvasLayer/VirtualController3D.process_mode = Node.PROCESS_MODE_INHERIT
+
+
 func _physics_process(delta: float) -> void:
 
 	# Add gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+
+	# Translate controls (from virtual controller)
+	translate_controls()
 
 	# Get the input direction.
 	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
@@ -35,3 +44,29 @@ func _physics_process(delta: float) -> void:
 
 	# Apply the vertical and horizontal movement.
 	move_and_slide()
+
+
+func translate_controls() -> void:
+	# Forward "move_up" to "ui_up"
+	if Input.is_action_pressed("move_up"):
+		Input.action_press("ui_up")
+	elif Input.is_action_just_released("move_up"):
+		Input.action_release("ui_up")
+	
+	# Forward "move_down" to "ui_down"
+	if Input.is_action_pressed("move_down"):
+		Input.action_press("ui_down")
+	elif Input.is_action_just_released("move_down"):
+		Input.action_release("ui_down")
+	
+	# Forward "move_left" to "ui_left"
+	if Input.is_action_pressed("move_left"):
+		Input.action_press("ui_left")
+	elif Input.is_action_just_released("move_left"):
+		Input.action_release("ui_left")
+	
+	# Forward "move_right" to "ui_right"
+	if Input.is_action_pressed("move_right"):
+		Input.action_press("ui_right")
+	elif Input.is_action_just_released("move_right"):
+		Input.action_release("ui_right")
