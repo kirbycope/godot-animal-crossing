@@ -82,7 +82,7 @@ shadow_enabled = true
 environment = SubResource("Environment_hbafa")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.999966, -0.00472977, 0.00675535, 0, 0.819174, 0.573545, -0.00824654, -0.573526, 0.819146, -0.00806358, 0.00950076, -1.21023)
+transform = Transform3D(0.999962, -0.00617059, 0.00617059, 0, 0.707107, 0.707107, -0.00872654, -0.70708, 0.70708, -0.00806358, 0.00950076, -1.21023)
 script = ExtResource("5_gwb37")
 
 [node name="Player" parent="." instance=ExtResource("4_530rd")]

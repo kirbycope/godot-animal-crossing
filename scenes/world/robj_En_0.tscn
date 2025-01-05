@@ -3,9 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://cqoujsfn6v3gq" path="res://assets/world/bg/tex_fence.png" id="1_lj2gt"]
 [ext_resource type="Texture2D" uid="uid://dhqbkkaoto5vm" path="res://assets/world/bg/tex_cliff01.png" id="2_8klvb"]
 [ext_resource type="Texture2D" uid="uid://b8r82o4kimfyy" path="res://assets/world/bg/tex_cliff01_n.png" id="3_btcv4"]
-[ext_resource type="Texture2D" uid="uid://ji3ikrlgvny0" path="res://assets/world/robj/tex_rail.png" id="3_cvs1n"]
 [ext_resource type="Texture2D" uid="uid://lqfqebnx2emq" path="res://assets/textures/tex_grass_a.png" id="4_5n3jx"]
 [ext_resource type="Texture2D" uid="uid://drg1chil3gc34" path="res://assets/textures/tex_flocky_grd.png" id="5_0v5xt"]
+[ext_resource type="Texture2D" uid="uid://haiyfwaffdp4" path="res://assets/textures/tex_rail.png" id="6_d4lmu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_su7ug"]
 resource_name = "m_fence_mat"
@@ -133,7 +133,7 @@ shadow_mesh = SubResource("ArrayMesh_4cdsi")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pkvnr"]
 resource_name = "m_rail_mat"
 cull_mode = 2
-albedo_texture = ExtResource("3_cvs1n")
+albedo_texture = ExtResource("6_d4lmu")
 metallic = 1.0
 roughness = 0.0764706
 

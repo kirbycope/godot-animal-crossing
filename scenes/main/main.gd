@@ -11,7 +11,7 @@ func _input(event: InputEvent) -> void:
 		get_tree().change_scene_to_file("res://scenes/sandbox.tscn")
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	# Play walking animation
 	var animation_player = $Path3D/PathFollow3D/TomNook/AnimationPlayer
 	if animation_player.current_animation != "walking":

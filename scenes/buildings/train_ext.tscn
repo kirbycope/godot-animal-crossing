@@ -1,8 +1,8 @@
-[gd_scene load_steps=13 format=4 uid="uid://ct21r1mn6qiim"]
+[gd_scene load_steps=14 format=4 uid="uid://ct21r1mn6qiim"]
 
 [ext_resource type="Texture2D" uid="uid://d2df8sml888ap" path="res://assets/buildings/train_ext/robj_train.png" id="1_71upg"]
 [ext_resource type="Texture2D" uid="uid://dlqyeswy5l6ur" path="res://assets/buildings/train_ext/robj_train_mirror.png" id="2_51ild"]
-[ext_resource type="Texture2D" uid="uid://ce6g4ngkmkhg7" path="res://assets/buildings/train_ext/sobj_train.png" id="3_c2tdw"]
+[ext_resource type="Texture2D" uid="uid://722vlfnnn8pu" path="res://assets/buildings/train_ext/sobj_train.png" id="3_c2tdw"]
 [ext_resource type="Texture2D" uid="uid://b0d6l7q87doi" path="res://assets/buildings/train_ext/sobj_train_mirror.png" id="4_p0v84"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fsae4"]
@@ -80,7 +80,6 @@ transparency = 2
 alpha_scissor_threshold = 0.3
 alpha_antialiasing_mode = 0
 cull_mode = 2
-albedo_texture = ExtResource("4_p0v84")
 metallic = 1.0
 roughness = 0.0764706
 uv1_scale = Vector3(0.5, 0.5, 1)
@@ -102,6 +101,12 @@ _surfaces = [{
 "vertex_count": 100,
 "vertex_data": PackedByteArray("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")
 }]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3a2y0"]
+transparency = 1
+albedo_texture = ExtResource("4_p0v84")
+uv1_scale = Vector3(0.5, 0.5, 1)
+uv1_offset = Vector3(0, 0.25, 0)
 
 [node name="TrainExt" type="Node3D"]
 
@@ -145,3 +150,4 @@ surface_material_override/0 = SubResource("StandardMaterial3D_tcjir")
 [node name="ext" type="MeshInstance3D" parent="Skeleton3D"]
 visible = false
 mesh = SubResource("ArrayMesh_ccsht")
+surface_material_override/0 = SubResource("StandardMaterial3D_3a2y0")
