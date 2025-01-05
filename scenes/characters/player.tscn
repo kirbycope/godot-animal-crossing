@@ -1725,7 +1725,6 @@ target_position = Vector3(0, 0, -1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 2.5)
 
 [node name="Camera3D" type="Camera3D" parent="CameraMount"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="RayCast3D" type="RayCast3D" parent="CameraMount/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.5)

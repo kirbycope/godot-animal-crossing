@@ -13,6 +13,8 @@ func _ready() -> void:
 	# Override the addon's configuration
 	player.enable_crouching = false
 	player.enable_jumping = false
+	player.enable_kicking = false
+	player.enable_punching = false
 	player.lock_camera = true
 	player.lock_perspective = true
 	player.speed_running = 1.0
