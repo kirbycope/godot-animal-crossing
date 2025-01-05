@@ -1,5 +1,6 @@
-[gd_scene load_steps=20 format=3 uid="uid://cl4gth1mqs7su"]
+[gd_scene load_steps=22 format=3 uid="uid://cl4gth1mqs7su"]
 
+[ext_resource type="Script" path="res://scenes/sandbox.gd" id="1_1dxw4"]
 [ext_resource type="Shader" path="res://scenes/sandbox_sky.gdshader" id="1_nudt6"]
 [ext_resource type="AudioStream" uid="uid://bgittwx4se5pm" path="res://assets/sounds/music/022_9_am.mp3" id="1_wq2pd"]
 [ext_resource type="Texture2D" uid="uid://2y0ueogjxg0q" path="res://assets/textures/tex_cloud.png" id="2_41ysf"]
@@ -9,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://b8r82o4kimfyy" path="res://assets/world/bg/tex_cliff01_n.png" id="4_06l02"]
 [ext_resource type="PackedScene" uid="uid://djx2b67scfj5j" path="res://scenes/characters/player.tscn" id="4_530rd"]
 [ext_resource type="Texture2D" uid="uid://drg1chil3gc34" path="res://assets/textures/tex_flocky_grd.png" id="4_f0mwf"]
+[ext_resource type="Script" path="res://scenes/main/camera_3d.gd" id="5_gwb37"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3vw8w"]
 shader = ExtResource("1_nudt6")
@@ -66,6 +68,7 @@ uv1_offset = Vector3(0.5, 0, 0.5)
 uv1_triplanar = true
 
 [node name="Sandbox" type="Node3D"]
+script = ExtResource("1_1dxw4")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_wq2pd")
@@ -77,6 +80,10 @@ shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_hbafa")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.999966, -0.00472977, 0.00675535, 0, 0.819174, 0.573545, -0.00824654, -0.573526, 0.819146, -0.00806358, 0.00950076, -1.21023)
+script = ExtResource("5_gwb37")
 
 [node name="Player" parent="." instance=ExtResource("4_530rd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.156, 0)
