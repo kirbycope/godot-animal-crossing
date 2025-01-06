@@ -4,6 +4,7 @@ extends Camera3D
 var initial_basis: Basis
 var offset: Vector3
 
+
 func _ready():
 
 	# Store the initial global orientation
@@ -11,6 +12,7 @@ func _ready():
 	
 	# Calculate the initial offset in global coordinates
 	offset = Vector3(0, 0.95, 1)  # 1 meter back
+
 
 func _process(_delta):
 
