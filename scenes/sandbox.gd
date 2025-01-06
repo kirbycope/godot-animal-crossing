@@ -18,6 +18,7 @@ func _ready() -> void:
 	player.enable_kicking = false
 	player.enable_punching = false
 	player.lock_camera = true
+	player.lock_movement_y = true
 	player.lock_perspective = true
 	player.speed_running = 1.0
 	player.speed_sprinting = 1.5
@@ -33,7 +34,7 @@ func _physics_process(delta: float) -> void:
 	if input_dir.y != 0:
 
 		# Check if the player is not colliding with a wall
-		if not player.is_on_wall():
+		if !player.is_on_wall():
 
 			# Calculate the rotation angle based on input and speed.
 			var angle = -(input_dir.y * player.speed_current * delta) / RADIUS

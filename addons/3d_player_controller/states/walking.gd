@@ -20,7 +20,8 @@ func _input(event: InputEvent) -> void:
 func _process(delta: float) -> void:
 
 	# Check if the player is not moving
-	if player.velocity == Vector3(0.0, 0.0, 0.0):
+	if player.velocity == Vector3(0.0, 0.0, 0.0) \
+	and Input.get_vector("move_left", "move_right", "move_up", "move_down") != Vector2.ZERO:
 
 		# Start "standing"		
 		to_standing()
