@@ -22,7 +22,7 @@ func _process(delta: float) -> void:
 	# Check if the player is not moving
 	if player.velocity == Vector3(0.0, 0.0, 0.0):
 
-		# Start "standing"		
+		# Start "standing"
 		to_standing()
 
 	# The player must be moving
