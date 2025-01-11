@@ -1,8 +1,9 @@
-[gd_scene load_steps=38 format=4 uid="uid://djx2b67scfj5j"]
+[gd_scene load_steps=39 format=4 uid="uid://djx2b67scfj5j"]
 
 [ext_resource type="Script" path="res://addons/3d_player_controller/player_3d.gd" id="1_2b062"]
 [ext_resource type="Script" path="res://addons/3d_player_controller/virtual_controller_3d.gd" id="2_ce2xq"]
 [ext_resource type="Script" path="res://addons/3d_player_controller/states/climbing.gd" id="3_mgi72"]
+[ext_resource type="PackedScene" path="res://addons/3d_player_controller/virtual_buttons.tscn" id="3_mk1wl"]
 [ext_resource type="Texture2D" uid="uid://dsohobrywp5mu" path="res://assets/characters/cat00/cloth.png" id="3_x5nyf"]
 [ext_resource type="Texture2D" uid="uid://bg0cu2lyrhskk" path="res://assets/characters/cat00/m.0_2.png" id="4_6f6f8"]
 [ext_resource type="Script" path="res://addons/3d_player_controller/states/crawling.gd" id="4_a5fvp"]
@@ -1021,6 +1022,8 @@ script = ExtResource("1_2b062")
 
 [node name="VirtualController3D" type="Node2D" parent="CanvasLayer"]
 script = ExtResource("2_ce2xq")
+
+[node name="VirtualButtons" parent="CanvasLayer" instance=ExtResource("3_mk1wl")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)

@@ -25,7 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://d3fxla45jnq7a" path="res://assets/textures/ac_nl_logo.png" id="14_iqeaw"]
 [ext_resource type="Script" path="res://scenes/main/texture_rect.gd" id="15_pj7xd"]
 [ext_resource type="Script" path="res://scenes/main/rich_text_label.gd" id="21_j73h2"]
-[ext_resource type="Texture2D" uid="uid://t4f48p5v3b0t" path="res://assets/buttonA.png" id="26_c1a1y"]
+[ext_resource type="Texture2D" uid="uid://t4f48p5v3b0t" path="res://addons/3d_player_controller/textures/white/2x/buttonA.png" id="26_n4jki"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3vw8w"]
 shader = ExtResource("3_2oyhw")
@@ -1269,7 +1269,7 @@ offset_top = -2.0
 offset_right = 244.0
 offset_bottom = 98.0
 scale = Vector2(0.72, 0.72)
-texture = ExtResource("26_c1a1y")
+texture = ExtResource("26_n4jki")
 
 [node name="TextureRect" type="TextureRect" parent="RichTextLabel"]
 layout_mode = 0
@@ -1278,4 +1278,4 @@ offset_top = 2.0
 offset_right = 248.0
 offset_bottom = 102.0
 scale = Vector2(0.64, 0.64)
-texture = ExtResource("26_c1a1y")
+texture = ExtResource("26_n4jki")
