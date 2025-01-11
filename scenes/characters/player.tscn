@@ -1024,6 +1024,7 @@ script = ExtResource("2_ce2xq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+visible = false
 shape = SubResource("CapsuleShape3D_5e6s3")
 
 [node name="Visuals" type="Node3D" parent="."]
@@ -1700,30 +1701,33 @@ autoplay = "Standing_Idle"
 playback_default_blend_time = 0.2
 
 [node name="RayCast3D_JumpTarget" type="RayCast3D" parent="Visuals"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, -0.6)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.25)
+target_position = Vector3(0, -0.25, 0)
 
 [node name="RayCast3D_InFrontPlayer_Top" type="RayCast3D" parent="Visuals"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
-target_position = Vector3(0, 0, -0.5)
+target_position = Vector3(0, 0, -0.25)
 
 [node name="RayCast3D_InFrontPlayer_High" type="RayCast3D" parent="Visuals"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
-target_position = Vector3(0, 0, -0.5)
+target_position = Vector3(0, 0, -0.25)
 
 [node name="RayCast3D_InFrontPlayer_Middle" type="RayCast3D" parent="Visuals"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
-target_position = Vector3(0, 0, -0.5)
+target_position = Vector3(0, 0, -0.25)
 
 [node name="RayCast3D_InFrontPlayer_Low" type="RayCast3D" parent="Visuals"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
-target_position = Vector3(0, 0, -0.5)
+target_position = Vector3(0, 0, -0.25)
 
 [node name="RayCast3D_BelowPlayer" type="RayCast3D" parent="Visuals"]
+target_position = Vector3(0, -0.25, 0)
 
 [node name="HeldItemMount" type="Node3D" parent="Visuals"]
 
 [node name="CameraMount" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 2.5)
+visible = false
 
 [node name="Camera3D" type="Camera3D" parent="CameraMount"]
 
@@ -1733,8 +1737,7 @@ target_position = Vector3(0, 0, -1)
 
 [node name="ItemMount" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
 
 [node name="States" type="Node" parent="."]
 

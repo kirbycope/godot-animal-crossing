@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://c3n0ytq5oyds4"]
+[gd_scene load_steps=37 format=3 uid="uid://c3n0ytq5oyds4"]
 
 [ext_resource type="AudioStream" uid="uid://bg2h3mppvdg54" path="res://assets/sounds/music/main_theme.mp3" id="1_wjoo1"]
 [ext_resource type="Script" path="res://scenes/main/main.gd" id="1_xg0kj"]
@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://d3fxla45jnq7a" path="res://assets/textures/ac_nl_logo.png" id="14_iqeaw"]
 [ext_resource type="Script" path="res://scenes/main/texture_rect.gd" id="15_pj7xd"]
 [ext_resource type="Script" path="res://scenes/main/rich_text_label.gd" id="21_j73h2"]
+[ext_resource type="Texture2D" uid="uid://t4f48p5v3b0t" path="res://assets/buttonA.png" id="26_c1a1y"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3vw8w"]
 shader = ExtResource("3_2oyhw")
@@ -1254,7 +1255,26 @@ grow_vertical = 0
 theme_override_colors/font_outline_color = Color(0.87451, 0.709804, 0.176471, 1)
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/normal_font_size = 48
-text = "PRESS (A)"
+text = "PRESS"
 fit_content = true
 scroll_active = false
 script = ExtResource("21_j73h2")
+
+[node name="TextureRect2" type="TextureRect" parent="RichTextLabel"]
+modulate = Color(0.87451, 0.709804, 0.176471, 1)
+layout_mode = 0
+offset_left = 144.0
+offset_top = -2.0
+offset_right = 244.0
+offset_bottom = 98.0
+scale = Vector2(0.72, 0.72)
+texture = ExtResource("26_c1a1y")
+
+[node name="TextureRect" type="TextureRect" parent="RichTextLabel"]
+layout_mode = 0
+offset_left = 148.0
+offset_top = 2.0
+offset_right = 248.0
+offset_bottom = 102.0
+scale = Vector2(0.64, 0.64)
+texture = ExtResource("26_c1a1y")
