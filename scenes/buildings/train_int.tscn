@@ -86,8 +86,6 @@ blend_shape_mode = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1d7mj"]
 resource_name = "m_shadow_mat"
-transparency = 1
-blend_mode = 3
 albedo_texture = ExtResource("3_aa6se")
 metallic = 1.0
 roughness = 0.0764706
@@ -339,6 +337,7 @@ _surfaces = [{
 blend_shape_mode = 0
 
 [node name="TrainInt" type="Node3D"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("")
@@ -410,6 +409,7 @@ mesh = SubResource("ArrayMesh_p3ojy")
 skeleton = NodePath("")
 
 [node name="vsn_mesh_10_" type="MeshInstance3D" parent="Skeleton3D"]
+transform = Transform3D(1, 0, 0, 0, 1.1, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_ouar4")
 skeleton = NodePath("")
 
