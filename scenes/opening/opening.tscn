@@ -3,17 +3,18 @@
 [ext_resource type="Script" path="res://scenes/opening/opening.gd" id="1_gxtta"]
 [ext_resource type="PackedScene" uid="uid://72cow32vv642" path="res://scenes/buildings/train_int.tscn" id="1_ullf0"]
 [ext_resource type="PackedScene" uid="uid://dja1icux27v2m" path="res://scenes/characters/mnk.tscn" id="2_t0jmk"]
-[ext_resource type="AudioStream" uid="uid://cym5tqr0sveg5" path="res://assets/sounds/music/train_rover.mp3" id="3_f3pe4"]
+[ext_resource type="AudioStream" uid="uid://dgox0686ml874" path="res://assets/sounds/music/train_rover.mp3" id="3_f3pe4"]
 
 [node name="OpeningScene" type="Node3D"]
 script = ExtResource("1_gxtta")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_f3pe4")
+volume_db = -4.0
+autoplay = true
+parameters/looping = true
 
 [node name="TrainInt" parent="." instance=ExtResource("1_ullf0")]
 
 [node name="Mnk" parent="." instance=ExtResource("2_t0jmk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.05, 4.25)
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_f3pe4")
-autoplay = true
-parameters/looping = true
