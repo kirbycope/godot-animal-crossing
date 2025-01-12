@@ -42,7 +42,6 @@ func _on_movement_timer_timeout() -> void:
 	var end_pos = start_pos + Vector3(0.0, -0.1, 0.1)
 
 	# Perform movement sequence
-	tween.parallel().tween_property(train_camera, "rotation_degrees:y", -15, 1.0)
 	tween.parallel().tween_property(rover, "rotation_degrees:x", 0, 0.2)
 	tween.parallel().tween_property(rover, "rotation_degrees:y", 90, 0.5)
 	tween.parallel().tween_property(rover, "position", end_pos, 0.5)
@@ -67,7 +66,6 @@ func _on_movement_timer_timeout() -> void:
 
 	# Perform movement sequence
 	end_pos = end_pos + Vector3(-0.35, 0.0, 0.0)
-	tween.parallel().tween_property(train_camera, "rotation_degrees:y", 15, 1.0)
 	tween.parallel().tween_property(rover, "rotation_degrees:y", 90, 0.5)
 	tween.parallel().tween_property(rover, "position", end_pos, 1.0)
 
@@ -82,7 +80,6 @@ func _on_movement_timer_timeout() -> void:
 
 	# Perform movement sequence
 	end_pos = end_pos + Vector3(0.0, 0.1, 0.0)
-	tween.parallel().tween_property(train_camera, "rotation_degrees:x", -5, 0.7)
 	tween.parallel().tween_property(rover, "rotation_degrees:x", 15, 0.1)
 	tween.parallel().tween_property(rover, "rotation_degrees:y", 195, 0.1)
 	tween.parallel().tween_property(rover, "position", end_pos, 0.1)
@@ -94,6 +91,10 @@ func _on_timer_timeout() -> void:
 
 	# Enable scene change
 	can_change_scene = true
+
+
+func _process(delta: float) -> void:
+	train_camera.look_at(rover.global_position + Vector3(0.0, 0.2, 0.0))
 
 
 ## Called when the node enters the scene tree for the first time.
