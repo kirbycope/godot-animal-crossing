@@ -343,7 +343,7 @@ transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 root_node = NodePath("")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, -2.5, 3.5, 61.1)
+transform = Transform3D(10, 0, 0, 0, 9.39693, 3.4202, 0, -3.4202, 9.39693, -2.5, 3.5, 62)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.836514, -0.54767, 0.0173379, 0.00816768, 0.0191754, 0.999783, -0.547884, 0.836474, -0.0115673, 0, 0, 0)

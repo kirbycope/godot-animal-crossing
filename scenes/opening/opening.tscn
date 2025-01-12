@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cjlr8llgxd4mn"]
+[gd_scene load_steps=6 format=3 uid="uid://cjlr8llgxd4mn"]
 
 [ext_resource type="Script" path="res://scenes/opening/opening.gd" id="1_gxtta"]
 [ext_resource type="PackedScene" uid="uid://72cow32vv642" path="res://scenes/buildings/train_int.tscn" id="1_ullf0"]
 [ext_resource type="PackedScene" uid="uid://dja1icux27v2m" path="res://scenes/characters/mnk.tscn" id="2_t0jmk"]
 [ext_resource type="AudioStream" uid="uid://dgox0686ml874" path="res://assets/sounds/music/train_rover.mp3" id="3_f3pe4"]
+[ext_resource type="PackedScene" uid="uid://cbs1onyvgfve2" path="res://scenes/characters/xct.tscn" id="5_sdlsj"]
 
 [node name="OpeningScene" type="Node3D"]
 script = ExtResource("1_gxtta")
@@ -18,3 +19,6 @@ parameters/looping = true
 
 [node name="Mnk" parent="." instance=ExtResource("2_t0jmk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.05, 4.25)
+
+[node name="Rover" parent="." instance=ExtResource("5_sdlsj")]
+transform = Transform3D(-0.965926, 0.0669873, 0.25, -3.55271e-15, 0.965926, -0.258819, -0.258819, -0.25, -0.933013, 0.44, 0.1, 5.22)
