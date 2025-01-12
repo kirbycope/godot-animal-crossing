@@ -86,6 +86,7 @@ func _on_movement_timer_timeout() -> void:
 	tween.parallel().tween_property(rover, "rotation_degrees:x", 15, 0.1)
 	tween.parallel().tween_property(rover, "rotation_degrees:y", 195, 0.1)
 	tween.parallel().tween_property(rover, "position", end_pos, 0.1)
+	tween.parallel().tween_property($Textbox, "visible", true, 0.7)
 
 
 ## Timer completion callback
