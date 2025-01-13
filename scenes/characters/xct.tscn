@@ -1,12 +1,14 @@
-[gd_scene load_steps=18 format=4 uid="uid://cbs1onyvgfve2"]
+[gd_scene load_steps=21 format=4 uid="uid://cbs1onyvgfve2"]
 
 [ext_resource type="Texture2D" uid="uid://bcu8a0y5y0ya4" path="res://assets/characters/xct/b0_2.png" id="1_4cisc"]
+[ext_resource type="Shader" path="res://scenes/characters/blink_eyes.gdshader" id="2_587im"]
 [ext_resource type="Texture2D" uid="uid://b5ftmcnymei8r" path="res://assets/characters/xct/e.0_2.png" id="2_o6nvi"]
 [ext_resource type="Texture2D" uid="uid://us3f1te7dkig" path="res://assets/characters/xct/m.0_2.png" id="3_nljiu"]
+[ext_resource type="Texture2D" uid="uid://djn1v7ppcm31l" path="res://assets/characters/xct/e.1_2.png" id="4_uhgwu"]
+[ext_resource type="Texture2D" uid="uid://refjnxlpv64r" path="res://assets/characters/xct/e.2_2.png" id="5_ocku3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2vc8b"]
 resource_name = "b_mat"
-albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
 albedo_texture = ExtResource("1_4cisc")
 uv1_scale = Vector3(0.5, 1, 1)
 
@@ -97,11 +99,12 @@ bind/20/name = &"tail2_3"
 bind/20/bone = -1
 bind/20/pose = Transform3D(1.86517e-06, -4.81482e-35, -1, -1.40701e-13, 1, -2.6243e-19, 1, 1.40701e-13, 1.86517e-06, -6.63674e-07, -9.01557, 0.00910494)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0gvk3"]
-resource_name = "e_mat"
-albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
-albedo_texture = ExtResource("2_o6nvi")
-uv1_scale = Vector3(0.5, 1, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3s71r"]
+render_priority = 0
+shader = ExtResource("2_587im")
+shader_parameter/texture_1 = ExtResource("2_o6nvi")
+shader_parameter/texture_2 = ExtResource("4_uhgwu")
+shader_parameter/texture_3 = ExtResource("5_ocku3")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_vp5uj"]
 resource_name = "AuxScene_mesh2"
@@ -113,7 +116,7 @@ _surfaces = [{
 "index_count": 66,
 "index_data": PackedByteArray("AAACAAEAAwAFAAQABgAIAAcACQALAAoADAAOAA0ADwARABAAEgAUABMAFQAXABYAGAAaABkAGwAdABwAHgAgAB8AIQAjACIAJAAmACUAJwApACgAKgAsACsALQAvAC4AMAAyADEAMwA1ADQANgA4ADcAOQA7ADoAPAA+AD0APwBBAEAA"),
 "lods": [1.60617, PackedByteArray("DgBCAEMADgAIAEIAQgAaAEMADgBDAAQADgAEAAoAGgBEAEMARABFAEMARAAvAEUAQwBFADEAMQBFAD0A")],
-"material": SubResource("StandardMaterial3D_0gvk3"),
+"material": SubResource("ShaderMaterial_3s71r"),
 "name": "e_mat",
 "primitive": 3,
 "skin_data": PackedByteArray("CQAAAAAAAAD//wAAAAAAAAkAAAAAAAAA//8AAAAAAAAJAAAAAAAAAP//AAAAAAAACQAAAAAAAAD//wAAAAAAAAkAAAAAAAAA//8AAAAAAAAJAAAAAAAAAP//AAAAAAAACQAAAAAAAAD//wAAAAAAAAkAAAAAAAAA//8AAAAAAAAJAAAAAAAAAP//AAAAAAAACQAAAAAAAAD//wAAAAAAAAkAAAAAAAAA//8AAAAAAAAJAAAAAAAAAP//AAAAAAAACQAAAAAAAAD//wAAAAAAAAkAAAAAAAAA//8AAAAAAAAJAAAAAAAAAP//AAAAAAAACQAAAAAAAAD//wAAAAAAAAkAAAAAAAAA//8AAAAAAAAJAAAAAAAAAP//AAAAAAAACQAAAAAAAAD//wAAAAAAAAkAAAAAAAAA//8AAAAAAAAJAAAAAAAAAP//AAAAAAAACQAAAAAAAAD//wAAAAAAAAkAAAAAAAAA//8AAAAAAAAJAAAAAAAAAP//AAAAAAAACQAAAAAAAAD//wAAAAAAAAkAAAAAAAAA//8AAAAAAAAJAAAAAAAAAP//AAAAAAAACQAAAAAAAAD//wAAAAAAAAkAAAAAAAAA//8AAAAAAAAJAAAAAAAAAP//AAAAAAAACQAAAAAAAAD//wAAAAAAAAkAAAAAAAAA//8AAAAAAAAJAAAAAAAAAP//AAAAAAAACQAAAAAAAAD//wAAAAAAAAkAAAAAAAAA//8AAAAAAAAJAAAAAAAAAP//AAAAAAAACQAAAAAAAAD//wAAAAAAAAkAAAAAAAAA//8AAAAAAAAJAAAAAAAAAP//AAAAAAAACQAAAAAAAAD//wAAAAAAAAkAAAAAAAAA//8AAAAAAAAJAAAAAAAAAP//AAAAAAAACQAAAAAAAAD//wAAAAAAAAkAAAAAAAAA//8AAAAAAAAJAAAAAAAAAP//AAAAAAAACQAAAAAAAAD//wAAAAAAAAkAAAAAAAAA//8AAAAAAAAJAAAAAAAAAP//AAAAAAAACQAAAAAAAAD//wAAAAAAAAkAAAAAAAAA//8AAAAAAAAJAAAAAAAAAP//AAAAAAAACQAAAAAAAAD//wAAAAAAAAkAAAAAAAAA//8AAAAAAAAJAAAAAAAAAP//AAAAAAAACQAAAAAAAAD//wAAAAAAAAkAAAAAAAAA//8AAAAAAAAJAAAAAAAAAP//AAAAAAAACQAAAAAAAAD//wAAAAAAAAkAAAAAAAAA//8AAAAAAAAJAAAAAAAAAP//AAAAAAAACQAAAAAAAAD//wAAAAAAAAkAAAAAAAAA//8AAAAAAAAJAAAAAAAAAP//AAAAAAAACQAAAAAAAAD//wAAAAAAAAkAAAAAAAAA//8AAAAAAAAJAAAAAAAAAP//AAAAAAAACQAAAAAAAAD//wAAAAAAAAkAAAAAAAAA//8AAAAAAAAJAAAAAAAAAP//AAAAAAAACQAAAAAAAAD//wAAAAAAAA=="),
@@ -192,7 +195,6 @@ bind/20/pose = Transform3D(1.86517e-06, -4.81482e-35, -1, -1.40701e-13, 1, -2.62
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ysft8"]
 resource_name = "m_mat"
-albedo_color = Color(0.906332, 0.906332, 0.906332, 1)
 albedo_texture = ExtResource("3_nljiu")
 uv1_scale = Vector3(0.5, 1, 1)
 
