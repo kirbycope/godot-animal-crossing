@@ -1,12 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://cjlr8llgxd4mn"]
+[gd_scene load_steps=12 format=3 uid="uid://cjlr8llgxd4mn"]
 
 [ext_resource type="Script" path="res://scenes/opening/opening.gd" id="1_gxtta"]
 [ext_resource type="PackedScene" uid="uid://72cow32vv642" path="res://scenes/buildings/train_int.tscn" id="1_ullf0"]
+[ext_resource type="PackedScene" uid="uid://dyymewypsk7il" path="res://addons/acvoicebox/ACVoicebox.tscn" id="2_0ku6l"]
 [ext_resource type="PackedScene" uid="uid://dja1icux27v2m" path="res://scenes/characters/mnk.tscn" id="2_t0jmk"]
 [ext_resource type="AudioStream" uid="uid://dgox0686ml874" path="res://assets/sounds/music/train_rover.mp3" id="3_f3pe4"]
 [ext_resource type="PackedScene" uid="uid://cbs1onyvgfve2" path="res://scenes/characters/xct.tscn" id="5_sdlsj"]
 [ext_resource type="Texture2D" uid="uid://cuujjhsg3yy6u" path="res://assets/textures/textbox_3.png" id="6_efosa"]
 [ext_resource type="Shader" path="res://scenes/opening/cursor.gdshader" id="7_18cod"]
+[ext_resource type="Script" path="res://scenes/opening/text.gd" id="8_11xbd"]
 [ext_resource type="Texture2D" uid="uid://c74oyy5vjdss6" path="res://assets/textures/cursor.png" id="8_l7iqf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_864mr"]
@@ -16,6 +18,8 @@ shader_parameter/bob_amplitude = 5.0
 
 [node name="OpeningScene" type="Node3D"]
 script = ExtResource("1_gxtta")
+
+[node name="ACVoicebox" parent="." instance=ExtResource("2_0ku6l")]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_f3pe4")
@@ -59,7 +63,7 @@ fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Textbox"]
+[node name="Text" type="RichTextLabel" parent="Textbox"]
 layout_mode = 0
 offset_left = 128.0
 offset_top = 116.0
@@ -69,9 +73,9 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/normal_font_size = 48
 bbcode_enabled = true
-text = "Oh! Excuse me! I have a quick question for you."
 fit_content = true
 scroll_active = false
+script = ExtResource("8_11xbd")
 
 [node name="Cursor" type="TextureRect" parent="Textbox"]
 material = SubResource("ShaderMaterial_864mr")
@@ -81,3 +85,6 @@ offset_top = 274.0
 offset_right = 952.0
 offset_bottom = 314.0
 texture = ExtResource("8_l7iqf")
+
+[connection signal="characters_sounded" from="ACVoicebox" to="." method="_on_ac_voicebox_characters_sounded"]
+[connection signal="finished_phrase" from="ACVoicebox" to="." method="_on_ac_voicebox_finished_phrase"]
