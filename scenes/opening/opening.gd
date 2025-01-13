@@ -4,10 +4,10 @@ extends Node3D
 @onready var rover_aninmation_player: AnimationPlayer = $Rover/AuxScene/AnimationPlayer
 @onready var train_camera: Camera3D = $TrainInt/Camera3D
 
-# Create a timer variable
 var can_change_scene := false
+var look_at_rover := false
 var movement_timer: Timer
-
+var started := false
 
 ## Called when there is an input event.
 func _input(event: InputEvent) -> void:
@@ -28,13 +28,15 @@ func _input(event: InputEvent) -> void:
 ## Movement timer completion callback
 func _on_movement_timer_timeout() -> void:
 
+	# Have the camera look at Rover
+	look_at_rover = true
+
 	# Start walking animation
 	rover_aninmation_player.get_animation("Walking_In_Place").loop_mode = Animation.LOOP_LINEAR
 	rover_aninmation_player.play("Walking_In_Place")
 
 	# Create tween for smooth movement
 	var tween = create_tween()
-	tween.set_trans(Tween.TRANS_CUBIC)
 	tween.set_ease(Tween.EASE_IN_OUT)
 
 	# Set up initial movement
@@ -46,31 +48,31 @@ func _on_movement_timer_timeout() -> void:
 	tween.parallel().tween_property(rover, "rotation_degrees:y", 90, 0.5)
 	tween.parallel().tween_property(rover, "position", end_pos, 0.5)
 
-	# Wait 0.5 seconds
-	tween.tween_interval(0.5)
+	# Create an interval (causing the previous tweens to run before continuing
+	tween.tween_interval(0.0)
 
 	# Perform movement sequence
 	end_pos = end_pos + Vector3(-0.4, 0.0, 0.0)
 	tween.tween_property(rover, "position", end_pos, 1.0)
 
-	# Wait 1.0 seconds
-	tween.tween_interval(0.5)
+	# Create an interval (causing the previous tweens to run before continuing
+	tween.tween_interval(0.0)
 
 	# Perform movement sequence
 	end_pos = end_pos + Vector3(0.0, 0.0, 0.55)
 	tween.parallel().tween_property(rover, "rotation_degrees:y", 180, 0.5)
 	tween.parallel().tween_property(rover, "position", end_pos, 2.0)
 
-	# Wait 2.0 seconds
-	tween.tween_interval(0.5)
+	# Create an interval (causing the previous tweens to run before continuing
+	tween.tween_interval(0.0)
 
 	# Perform movement sequence
 	end_pos = end_pos + Vector3(-0.35, 0.0, 0.0)
 	tween.parallel().tween_property(rover, "rotation_degrees:y", 90, 0.5)
 	tween.parallel().tween_property(rover, "position", end_pos, 1.0)
 
-	# Wait 1.0 seconds
-	tween.tween_interval(0.5)
+	# Create an interval (causing the previous tweens to run before continuing
+	tween.tween_interval(0.0)
 
 	# When movement is complete, play standing animation
 	tween.tween_callback(func():
@@ -94,7 +96,16 @@ func _on_timer_timeout() -> void:
 
 
 func _process(delta: float) -> void:
-	train_camera.look_at(rover.global_position + Vector3(0.0, 0.2, 0.0))
+	
+	if !started and 0.9 >= movement_timer.time_left and movement_timer.time_left <= 1.0:
+		started = true
+		var tween = create_tween()
+		print("looking at rover")
+		tween.parallel().tween_property(train_camera, "rotation_degrees:x", -2, 0.8)
+		tween.parallel().tween_property(train_camera, "rotation_degrees:y", -34, 0.8)
+
+	if look_at_rover:
+		train_camera.look_at(rover.global_position + Vector3(0.0, 0.2, 0.0))
 
 
 ## Called when the node enters the scene tree for the first time.

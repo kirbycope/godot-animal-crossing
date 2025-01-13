@@ -32,6 +32,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.05, 4.25)
 transform = Transform3D(-0.965926, 0.0669873, 0.25, -3.55271e-15, 0.965926, -0.258819, -0.258819, -0.25, -0.933013, 0.44, 0.1, 5.22)
 
 [node name="Textbox" type="TextureRect" parent="."]
+visible = false
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -43,6 +44,34 @@ offset_right = 512.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("6_efosa")
+
+[node name="Name" type="RichTextLabel" parent="Textbox"]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 11.0
+offset_right = 317.0
+offset_bottom = 78.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "[center]Rover[/center]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Textbox"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 116.0
+offset_right = 908.0
+offset_bottom = 306.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "Oh! Excuse me! I have a quick question for you."
+fit_content = true
+scroll_active = false
 
 [node name="Cursor" type="TextureRect" parent="Textbox"]
 material = SubResource("ShaderMaterial_864mr")
