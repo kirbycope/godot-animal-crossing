@@ -58,7 +58,6 @@ offset_bottom = 78.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 48
 bbcode_enabled = true
-text = "[center]Rover[/center]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
@@ -78,6 +77,7 @@ scroll_active = false
 script = ExtResource("8_11xbd")
 
 [node name="Cursor" type="TextureRect" parent="Textbox"]
+visible = false
 material = SubResource("ShaderMaterial_864mr")
 layout_mode = 0
 offset_left = 908.0

@@ -3,29 +3,150 @@ extends Node3D
 @onready var voicebox: ACVoiceBox = $ACVoicebox
 @onready var rover: CharacterBody3D = $Rover
 @onready var rover_aninmation_player: AnimationPlayer = $Rover/AuxScene/AnimationPlayer
+@onready var namebox: RichTextLabel = $Textbox/Name
 @onready var textbox: RichTextLabel = $Textbox/Text
+@onready var cursor: TextureRect = $Textbox/Cursor
 @onready var train_camera: Camera3D = $TrainInt/Camera3D
 
-var can_change_scene := false
 var look_at_rover := false
 var movement_timer: Timer
 var started := false
+
+var can_advance_dialog := false
+var current_dialog_index := -1
+var dialog_sequence := [
+	{
+		"speaker": "Rover",
+		"dialog": "Oh! Excuse me! I have a quick question for you.",
+		"emote": null
+	},
+	{
+		"speaker": "Rover",
+		"dialog": "It's now {hh}:{mm} {x}.m. on {MMMM} {dd}, {YYYY}, right?",
+		"emote": null
+	},
+	{
+		"speaker": "Rover",
+		"dialog": "I was right! Oh good! This watch of mine, it gets thrown off real easily sometimes!",
+		"emote": "happy"
+	},
+	{
+		"speaker": "Rover",
+		"dialog": "...I'm just gonna plop down in the seat across from you. If you don't mind, of course!",
+		"emote": null
+	},
+	{
+		"speaker": "Rover",
+		"dialog": "By the way, you... Hold it! Can I ask your name?",
+		"emote": null
+	},
+	{
+		"speaker": "Rover",
+		"dialog": "Oh, {name}...? Well, that's a fantastically great name!",
+		"emote": "happy"
+	},
+	{
+		"speaker": "Rover",
+		"dialog": "Yeah! You seem like a pretty cool guy to me!",
+		"emote": "happy"
+	},
+	{
+		"speaker": "Rover",
+		"dialog": "So, {name}... Tell me, where are you headed today?",
+		"emote": null
+	},
+	{
+		"speaker": "Rover",
+		"dialog": "The town of {town_name}?",
+		"emote": null
+	},
+	{
+		"speaker": "Rover",
+		"dialog": "Hmmmm. {town_name}, yeah, Ok... Don't think I've heard of it. I wonder where it is.",
+		"emote": "thinking"
+	},
+	{
+		"speaker": "Rover",
+		"dialog": "Oh, right! Map, map, map... Let's take a look along this train line... Ah, maybe this is it right here?",
+		"emote": null
+	},
+	{
+		"speaker": "Rover",
+		"dialog": "Heh. I'm glad we found it! This is {town_name} is it?",
+		"emote": "happy"
+	},
+	{
+		"speaker": "Rover",
+		"dialog": "So do you get to go to {town_name} very often?",
+		"emote": null
+	},
+	{
+		"speaker": "Rover",
+		"dialog": "Oh, today is your first time? That sounds like tons of fun! Can I ask, why're you headed there?",
+		"emote": "excited"
+	},
+	{
+		"speaker": "Rover",
+		"dialog": "What? Really?! Mya ha ha! I got it right on the first try!",
+		"emote": "happy"
+	},
+	{
+		"speaker": "Rover",
+		"dialog": "Well now, moving into a new place! A whole new LIFE, even! You must be really excited, right?",
+		"emote": "excited"
+	},
+	{
+		"speaker": "Rover",
+		"dialog": "I certainly hope you find happiness!",
+		"emote": "happy"
+	},
+	{
+		"speaker": "Speaker",
+		"dialog": "Now arriving in {town_name}! {town_name} Station!",
+		"emote": null
+	},
+	{
+		"speaker": "Rover",
+		"dialog": "Oh, hey! Looks like we're about to arrive in {town_name}.",
+		"emote": null
+	},
+	{
+		"speaker": "Rover",
+		"dialog": "Thanks for chatting with me! It's been a long time since I've enjoyed a train ride this much!",
+		"emote": "happy"
+	},
+	{
+		"speaker": "Rover",
+		"dialog": "Come to think of it, I've been riding the rails an awful lot again lately.",
+		"emote": "thinking"
+	},
+	{
+		"speaker": "Rover",
+		"dialog": "Haven't done this much traveling by train since 2002 or so... Man, that's weird.",
+		"emote": "thinking"
+	},
+	{
+		"speaker": "Rover",
+		"dialog": "Okay, good luck, {name}! Bye-bye!",
+		"emote": "happy"
+	}
+]
 
 
 ## Called when there is an input event.
 func _input(event: InputEvent) -> void:
 
-	# Only allow scene change after timer is done and input received
-	if can_change_scene:
+	# [jump] button _pressed_
+	if event.is_action_pressed("jump"):
 
-		# Check inputs
-		if event.is_action("crouch") \
-		or event.is_action("ui_select") \
-		or event.is_action("start") \
-		or event is InputEventScreenTouch:
+		# Try to advnace any open dialog
+		try_advance_dialog()
+	
+	# [sprint] button _pressed_
+	if event.is_action_pressed("sprint"):
 
-			# Load new scene
-			get_tree().change_scene_to_file("res://scenes/sandbox.tscn")
+		# Try to hurry the open dialog
+		try_hurry_dialog()
 
 
 ## Movement timer completion callback
@@ -88,46 +209,36 @@ func _on_movement_timer_timeout() -> void:
 	tween.parallel().tween_property(rover, "rotation_degrees:x", 15, 0.1)
 	tween.parallel().tween_property(rover, "rotation_degrees:y", 195, 0.1)
 	tween.parallel().tween_property(rover, "position", end_pos, 0.1)
-	tween.parallel().tween_property($Textbox, "visible", true, 0.7)
+	tween.parallel().tween_property($Textbox, "visible", true, 0.5)
 
 	# Start the dialog
 	tween.tween_callback(func():
-		var dialog = "Oh! Excuse me! I have a quick question for you."
-		#textbox.text = dialog
-		textbox.start_typing(dialog)
-		voicebox.play_string(dialog)
+		play_next_dialog()
 	)
 
 
-## Timer completion callback
-func _on_timer_timeout() -> void:
+## Called during the processing step of the main loop.
+func _process(_delta: float) -> void:
 
-	# Enable scene change
-	can_change_scene = true
-
-
-func _process(delta: float) -> void:
-	
+	# Look at Rover 1 second before they start moving.
 	if !started and 0.9 >= movement_timer.time_left and movement_timer.time_left <= 1.0:
 		started = true
 		var tween = create_tween()
 		tween.parallel().tween_property(train_camera, "rotation_degrees:x", -2, 0.8)
 		tween.parallel().tween_property(train_camera, "rotation_degrees:y", -34, 0.8)
 
+	# Check if the camera should be looking at Rover
 	if look_at_rover:
+
+		# Fix the camera to Rover's position
 		train_camera.look_at(rover.global_position + Vector3(0.0, 0.2, 0.0))
+
+	# Show the textbox cursor if the dialog can be advanced
+	cursor.visible = can_advance_dialog
 
 
 ## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-
-	# Create and configure the scene change timer
-	var timer := Timer.new()
-	timer.one_shot = true  
-	timer.wait_time = 3.0
-	timer.timeout.connect(_on_timer_timeout)
-	add_child(timer)
-	timer.start()
 
 	# Create and configure the movement timer
 	movement_timer = Timer.new()
@@ -138,9 +249,71 @@ func _ready() -> void:
 	movement_timer.start()
 
 
+## Called when the signal is emmitted for "done playing entire phrase".
 func _on_ac_voicebox_finished_phrase() -> void:
-	print("Done yappin'")
+
+	# Allow dialog advancement
+	can_advance_dialog = true
 
 
+## Called when the signal is emmitted for "done playing single sound".
 func _on_ac_voicebox_characters_sounded(characters: Variant) -> void:
-	pass # Replace with function body.
+	textbox.text += characters
+
+
+## Plays the next line in the dialog sequence.
+func play_next_dialog() -> void:
+
+	# Increment the dialog index
+	current_dialog_index += 1
+
+	# Check if there is more dialog to play
+	if current_dialog_index < dialog_sequence.size():
+
+		# Clear the textbox
+		namebox.text = ""
+		textbox.text = ""
+
+		# Get the next dialog line
+		var next_dialog = dialog_sequence[current_dialog_index]
+
+		# Set the speaker's name
+		namebox.text = "[center]" + next_dialog.speaker + "[/center]"
+
+		# Start playing the dialog
+		voicebox.play_string(next_dialog.dialog)
+
+	else:
+
+		# Load new scene
+		get_tree().change_scene_to_file("res://scenes/sandbox.tscn")
+
+
+## Attempts to advance the dialog if conditions are met.
+func try_advance_dialog() -> void:
+
+	# If the dialog is currently being typed, finish typing it
+	if can_advance_dialog and current_dialog_index < dialog_sequence.size():
+
+		# Reset flag
+		can_advance_dialog = false
+
+		# Play the next dialog
+		play_next_dialog()
+
+
+## Attempts to hurry the dialog if conditions are met.
+func try_hurry_dialog() -> void:
+
+	# If the dialog is currently being typed, finish typing it
+	if !can_advance_dialog and current_dialog_index < dialog_sequence.size():
+
+		# Stop the voice
+		voicebox.remaining_sounds = []
+		voicebox.stop()
+
+		# Display full text immediately
+		textbox.text = dialog_sequence[current_dialog_index].dialog
+
+		# Allow immediate advancement
+		can_advance_dialog = true
