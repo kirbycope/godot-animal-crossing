@@ -8,12 +8,9 @@ extends Node3D
 @onready var cursor: TextureRect = $Textbox/Cursor
 @onready var train_camera: Camera3D = $TrainInt/Camera3D
 
-var look_at_rover := false
-var movement_timer: Timer
-var started := false
-
-var can_advance_dialog := false
-var current_dialog_index := -1
+var can_advance_dialog: bool = false
+var current_dialog_index: int = -1
+var dialog_hurried: bool = false
 var dialog_sequence := [
 	{
 		"speaker": "Rover",
@@ -131,15 +128,41 @@ var dialog_sequence := [
 		"emote": "happy"
 	}
 ]
+var look_at_rover: bool = false
+var long_touch_timer: Timer
+var movement_timer: Timer
+var started: bool = false
 
 
 ## Called when there is an input event.
 func _input(event: InputEvent) -> void:
 
+	# Check if the event is a screen touch
+	if event is InputEventScreenTouch:
+
+		# Check if the event is a press
+		if event.is_pressed():
+
+			# Start the long touch timer
+			long_touch_timer.start()
+
+		# [touch] event _released_
+		if event.is_released():
+
+			# Stop the long touch timer
+			long_touch_timer.stop()
+
+			# If dialog was not hurried, try to advance dialog
+			if !dialog_hurried:
+				try_advance_dialog()
+			else:
+				dialog_hurried = false
+				can_advance_dialog = true
+
 	# [jump] button _pressed_
 	if event.is_action_pressed("jump"):
 
-		# Try to advnace any open dialog
+		# Try to advance any open dialog
 		try_advance_dialog()
 	
 	# [sprint] button _pressed_
@@ -248,6 +271,13 @@ func _ready() -> void:
 	add_child(movement_timer)
 	movement_timer.start()
 
+	# Create and configure the long touch timer
+	long_touch_timer = Timer.new()
+	long_touch_timer.one_shot = true 
+	long_touch_timer.wait_time = 0.5
+	long_touch_timer.timeout.connect(_on_long_touch_timer_timeout)
+	add_child(long_touch_timer)
+
 
 ## Called when the signal is emmitted for "done playing entire phrase".
 func _on_ac_voicebox_finished_phrase() -> void:
@@ -259,6 +289,20 @@ func _on_ac_voicebox_finished_phrase() -> void:
 ## Called when the signal is emmitted for "done playing single sound".
 func _on_ac_voicebox_characters_sounded(characters: Variant) -> void:
 	textbox.text += characters
+
+
+func _on_long_touch_timer_timeout() -> void:
+
+	# If the dialog is currently being typed, hurry it
+	if !can_advance_dialog and current_dialog_index < dialog_sequence.size():
+
+		# Stop the voice
+		voicebox.remaining_sounds = []
+		voicebox.stop()
+		dialog_hurried = true
+
+		# Display full text immediately
+		textbox.text = dialog_sequence[current_dialog_index].dialog
 
 
 ## Plays the next line in the dialog sequence.

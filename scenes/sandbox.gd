@@ -27,6 +27,7 @@ func _ready() -> void:
 	player.get_node("CanvasLayer/VirtualButtons/TouchScreenButtonX").modulate = "007bff"
 	player.get_node("CanvasLayer/VirtualButtons/TouchScreenButtonY").modulate = "28a745"
 
+
 ## Called during the physics processing step of the main loop.
 func _physics_process(delta: float) -> void:
 

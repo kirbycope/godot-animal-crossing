@@ -11,7 +11,8 @@ func _input(event: InputEvent) -> void:
 
 		# Check inputs
 		if event.is_action("crouch") \
-		or event.is_action("ui_select") \
+		or event.is_action("jump") \
+		or event.is_action("move_left") \
 		or event.is_action("start") \
 		or event is InputEventScreenTouch:
 
