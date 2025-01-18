@@ -16,6 +16,7 @@ var waiting_to_start = true
 
 
 func _ready():
+	visible = false
 	# Hide the smaller logo
 	$"../TextureRect2".visible = false
 	# Store initial position
@@ -55,6 +56,7 @@ func _process(delta):
 			return
 
 	elif is_animating:
+		visible = true
 		elapsed_time += delta
 		var progress = elapsed_time / animation_duration
 
