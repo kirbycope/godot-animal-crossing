@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=4 uid="uid://djx2b67scfj5j"]
+[gd_scene load_steps=40 format=4 uid="uid://djx2b67scfj5j"]
 
 [ext_resource type="Script" path="res://addons/3d_player_controller/player_3d.gd" id="1_2b062"]
 [ext_resource type="Script" path="res://addons/3d_player_controller/virtual_controller_3d.gd" id="2_ce2xq"]
@@ -1015,6 +1015,10 @@ _data = {
 "Walking_In_Place": SubResource("Animation_kqwu3")
 }
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_7yweg"]
+height = 0.1
+radius = 0.4
+
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_2b062")
 
@@ -1789,3 +1793,9 @@ script = ExtResource("13_sk7w8")
 [node name="Walking" type="Node" parent="States"]
 process_mode = 4
 script = ExtResource("14_dd2mj")
+
+[node name="ShapeCast3D" type="ShapeCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
+enabled = false
+shape = SubResource("CylinderShape3D_7yweg")
+target_position = Vector3(0, -0.5, 0)
