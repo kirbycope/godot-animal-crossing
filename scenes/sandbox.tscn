@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cl4gth1mqs7su"]
+[gd_scene load_steps=23 format=3 uid="uid://cl4gth1mqs7su"]
 
 [ext_resource type="Script" path="res://scenes/sandbox.gd" id="1_1dxw4"]
 [ext_resource type="Shader" path="res://scenes/sandbox_sky.gdshader" id="1_nudt6"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://djx2b67scfj5j" path="res://scenes/characters/player.tscn" id="4_530rd"]
 [ext_resource type="Texture2D" uid="uid://drg1chil3gc34" path="res://assets/textures/tex_flocky_grd.png" id="4_f0mwf"]
 [ext_resource type="Script" uid="uid://cu5kyvyy27dpn" path="res://scenes/main/camera_3d.gd" id="5_gwb37"]
+[ext_resource type="PackedScene" uid="uid://broydqccfbhwg" path="res://scenes/characters/link.tscn" id="12_pyx2i"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3vw8w"]
 shader = ExtResource("1_nudt6")
@@ -251,3 +252,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.75048, 1, -0.25018)
 use_collision = true
 mesh = SubResource("PlaneMesh_crt87")
 material = SubResource("StandardMaterial3D_nsth7")
+
+[node name="Link" parent="World/Surface" instance=ExtResource("12_pyx2i")]
+transform = Transform3D(12, 0, 0, 0, 12, 0, 0, 0, 12, 0, 11.156, -0.5)
