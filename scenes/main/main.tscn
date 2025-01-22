@@ -25,7 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://d3fxla45jnq7a" path="res://assets/textures/ac_nl_logo.png" id="14_iqeaw"]
 [ext_resource type="Script" path="res://scenes/main/texture_rect.gd" id="15_pj7xd"]
 [ext_resource type="Script" uid="uid://dgytyqqmmk5td" path="res://scenes/main/rich_text_label.gd" id="21_j73h2"]
-[ext_resource type="Texture2D" uid="uid://t4f48p5v3b0t" path="res://addons/3d_player_controller/textures/white/2x/buttonA.png" id="26_n4jki"]
+[ext_resource type="Texture2D" uid="uid://bj7uitcvuqoj2" path="res://addons/3d_player_controller/textures/game_icons/PNG/White/2x/buttonA.png" id="26_n4jki"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3vw8w"]
 shader = ExtResource("3_2oyhw")

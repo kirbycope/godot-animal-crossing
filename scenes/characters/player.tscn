@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=4 uid="uid://djx2b67scfj5j"]
+[gd_scene load_steps=42 format=4 uid="uid://djx2b67scfj5j"]
 
 [ext_resource type="Script" path="res://addons/3d_player_controller/player_3d.gd" id="1_2b062"]
 [ext_resource type="Script" path="res://addons/3d_player_controller/virtual_controller_3d.gd" id="2_ce2xq"]
@@ -13,7 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://bj4un54hndooa" path="res://assets/characters/cat00/b0_2.png" id="6_f24o3"]
 [ext_resource type="Script" path="res://addons/3d_player_controller/states/flying.gd" id="7_f4obt"]
 [ext_resource type="Script" path="res://addons/3d_player_controller/states/hanging.gd" id="8_6natx"]
+[ext_resource type="PackedScene" uid="uid://dv80q7jwkx20r" path="res://addons/3d_player_controller/debug.tscn" id="8_cusid"]
 [ext_resource type="Script" path="res://addons/3d_player_controller/states/holding.gd" id="9_cytab"]
+[ext_resource type="PackedScene" uid="uid://bf6dhhwfpuau6" path="res://addons/3d_player_controller/pause.tscn" id="9_sm3t1"]
 [ext_resource type="Script" path="res://addons/3d_player_controller/states/jumping.gd" id="10_k53uo"]
 [ext_resource type="Script" path="res://addons/3d_player_controller/states/running.gd" id="11_08ju1"]
 [ext_resource type="Script" path="res://addons/3d_player_controller/states/sprinting.gd" id="12_eo3gu"]
@@ -1737,6 +1739,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 2.5)
 visible = false
 
 [node name="Camera3D" type="Camera3D" parent="CameraMount"]
+
+[node name="Debug" parent="CameraMount/Camera3D" instance=ExtResource("8_cusid")]
+visible = false
+
+[node name="Pause" parent="CameraMount/Camera3D" instance=ExtResource("9_sm3t1")]
+visible = false
 
 [node name="RayCast3D" type="RayCast3D" parent="CameraMount/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.5)
