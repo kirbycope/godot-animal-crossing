@@ -9,6 +9,12 @@ func _process(delta: float) -> void:
 	# Uncomment the next line if using GodotSteam
 	#if !is_multiplayer_authority(): return
 
+	# Check if the player is swimming
+	if player.is_swimming:
+
+		# Start "swimming"
+		transition(node_name, "Swimming")
+
 	# Check if the game is not paused
 	if !player.game_paused:
 
@@ -81,11 +87,11 @@ func _process(delta: float) -> void:
 			# Reset the player's pitch
 				player.visuals.rotation.x = 0
 
-		# Check if the player is "flying"
-		if player.is_flying:
+	# Check if the player is "flying"
+	if player.is_flying:
 
-			# Play the animation
-			play_animation()
+		# Play the animation
+		play_animation()
 
 
 ## Plays the appropriate animation based on player state.
