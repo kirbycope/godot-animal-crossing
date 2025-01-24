@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://b8r82o4kimfyy" path="res://assets/world/bg/tex_cliff01_n.png" id="4_06l02"]
 [ext_resource type="PackedScene" uid="uid://djx2b67scfj5j" path="res://scenes/characters/player.tscn" id="4_530rd"]
 [ext_resource type="Texture2D" uid="uid://drg1chil3gc34" path="res://assets/textures/tex_flocky_grd.png" id="4_f0mwf"]
-[ext_resource type="Script" uid="uid://cu5kyvyy27dpn" path="res://scenes/main/camera_3d.gd" id="5_gwb37"]
+[ext_resource type="Script" path="res://scenes/main/camera_3d.gd" id="5_gwb37"]
 [ext_resource type="PackedScene" uid="uid://broydqccfbhwg" path="res://scenes/characters/link.tscn" id="12_pyx2i"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3vw8w"]
