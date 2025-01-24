@@ -1,6 +1,5 @@
 extends BaseState
 
-@onready var player: CharacterBody3D = get_parent().get_parent()
 var node_name = "Crouching"
 
 
