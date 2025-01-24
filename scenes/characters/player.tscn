@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=4 uid="uid://djx2b67scfj5j"]
+[gd_scene load_steps=43 format=4 uid="uid://djx2b67scfj5j"]
 
 [ext_resource type="Script" path="res://addons/3d_player_controller/player_3d.gd" id="1_2b062"]
 [ext_resource type="Script" path="res://addons/3d_player_controller/virtual_controller_3d.gd" id="2_ce2xq"]
@@ -21,6 +21,7 @@
 [ext_resource type="Script" path="res://addons/3d_player_controller/states/sprinting.gd" id="12_eo3gu"]
 [ext_resource type="Script" path="res://addons/3d_player_controller/states/standing.gd" id="13_sk7w8"]
 [ext_resource type="Script" path="res://addons/3d_player_controller/states/walking.gd" id="14_dd2mj"]
+[ext_resource type="Script" path="res://addons/3d_player_controller/states/swimming.gd" id="21_mms7x"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5e6s3"]
 radius = 0.15
@@ -1797,6 +1798,10 @@ script = ExtResource("12_eo3gu")
 
 [node name="Standing" type="Node" parent="States"]
 script = ExtResource("13_sk7w8")
+
+[node name="Swimming" type="Node" parent="States"]
+process_mode = 4
+script = ExtResource("21_mms7x")
 
 [node name="Walking" type="Node" parent="States"]
 process_mode = 4
