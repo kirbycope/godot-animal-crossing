@@ -302,7 +302,57 @@ func _on_long_touch_timer_timeout() -> void:
 		dialog_hurried = true
 
 		# Display full text immediately
-		textbox.text = dialog_sequence[current_dialog_index].dialog
+		var dialog_line = dialog_sequence[current_dialog_index].dialog
+		var line_to_deliver = parse_string(dialog_line)
+		textbox.text = line_to_deliver
+
+
+func needs_time_replacement(text: String) -> bool:
+	return "{hh}" in text or "{mm}" in text or "{x}.m." in text or "{MMMM}" in text or "{dd}" in text or "{YYYY}" in text
+
+
+func parse_string(text: String) -> String:
+	var result = text
+
+	# Only get time data if needed
+	if needs_time_replacement(result):
+		var time = Time.get_datetime_dict_from_system()
+		var hour = time["hour"]
+		var minute = time["minute"]
+		var ampm = "a" if hour < 12 else "p"
+
+		# Convert to 12-hour format
+		if hour == 0:
+			hour = 12
+		elif hour > 12:
+			hour = hour - 12
+
+		var hour_str = str(hour).pad_zeros(2)
+		var minute_str = str(minute).pad_zeros(2)
+
+		var months = [
+			"January", "February", "March", "April",
+			"May", "June", "July", "August",
+			"September", "October", "November", "December"
+		]
+		var month_name = months[time["month"] - 1]
+		var day = str(time["day"]).pad_zeros(2)
+		var year = str(time["year"])
+
+		result = result.replace("{hh}", hour_str)
+		result = result.replace("{mm}", minute_str)
+		result = result.replace("{x}.m.", ampm + ".m.")
+		result = result.replace("{MMMM}", month_name)
+		result = result.replace("{dd}", day)
+		result = result.replace("{YYYY}", year)
+
+	# Always check for name replacements
+	#if "{name}" in text:
+	#	result = result.replace("{name}", player_name)
+	#if "{town_name}" in text:
+	#	result = result.replace("{town_name}", town_name)
+
+	return result
 
 
 ## Plays the next line in the dialog sequence.
@@ -325,7 +375,9 @@ func play_next_dialog() -> void:
 		namebox.text = "[center]" + next_dialog.speaker + "[/center]"
 
 		# Start playing the dialog
-		voicebox.play_string(next_dialog.dialog)
+		var dialog_line = next_dialog.dialog
+		var line_to_deliver = parse_string(dialog_line)
+		voicebox.play_string(line_to_deliver)
 
 	else:
 
