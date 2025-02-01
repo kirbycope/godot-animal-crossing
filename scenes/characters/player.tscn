@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=4 uid="uid://djx2b67scfj5j"]
+[gd_scene load_steps=45 format=4 uid="uid://djx2b67scfj5j"]
 
 [ext_resource type="Script" path="res://addons/3d_player_controller/player_3d.gd" id="1_2b062"]
 [ext_resource type="Script" path="res://addons/3d_player_controller/virtual_controller_3d.gd" id="2_ce2xq"]
@@ -17,10 +17,12 @@
 [ext_resource type="Script" path="res://addons/3d_player_controller/states/holding.gd" id="9_cytab"]
 [ext_resource type="PackedScene" uid="uid://bf6dhhwfpuau6" path="res://addons/3d_player_controller/pause.tscn" id="9_sm3t1"]
 [ext_resource type="Script" path="res://addons/3d_player_controller/states/jumping.gd" id="10_k53uo"]
+[ext_resource type="Script" path="res://addons/3d_player_controller/states/base.gd" id="10_yx4e7"]
 [ext_resource type="Script" path="res://addons/3d_player_controller/states/running.gd" id="11_08ju1"]
 [ext_resource type="Script" path="res://addons/3d_player_controller/states/sprinting.gd" id="12_eo3gu"]
 [ext_resource type="Script" path="res://addons/3d_player_controller/states/standing.gd" id="13_sk7w8"]
 [ext_resource type="Script" path="res://addons/3d_player_controller/states/walking.gd" id="14_dd2mj"]
+[ext_resource type="Script" path="res://addons/3d_player_controller/states/skateboarding.gd" id="20_81s7v"]
 [ext_resource type="Script" path="res://addons/3d_player_controller/states/swimming.gd" id="21_mms7x"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5e6s3"]
@@ -1025,6 +1027,8 @@ radius = 0.4
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_2b062")
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="VirtualController3D" type="Node2D" parent="CanvasLayer"]
@@ -1757,6 +1761,10 @@ visible = false
 
 [node name="States" type="Node" parent="."]
 
+[node name="Base" type="Node" parent="States"]
+process_mode = 4
+script = ExtResource("10_yx4e7")
+
 [node name="Climbing" type="Node" parent="States"]
 process_mode = 4
 script = ExtResource("3_mgi72")
@@ -1791,6 +1799,10 @@ script = ExtResource("10_k53uo")
 [node name="Running" type="Node" parent="States"]
 process_mode = 4
 script = ExtResource("11_08ju1")
+
+[node name="Skateboarding" type="Node" parent="States"]
+process_mode = 4
+script = ExtResource("20_81s7v")
 
 [node name="Sprinting" type="Node" parent="States"]
 process_mode = 4
