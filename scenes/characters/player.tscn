@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=4 uid="uid://djx2b67scfj5j"]
+[gd_scene load_steps=47 format=4 uid="uid://djx2b67scfj5j"]
 
 [ext_resource type="Script" path="res://addons/3d_player_controller/player_3d.gd" id="1_2b062"]
 [ext_resource type="Script" path="res://addons/3d_player_controller/virtual_controller_3d.gd" id="2_ce2xq"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://addons/3d_player_controller/states/flying.gd" id="7_f4obt"]
 [ext_resource type="Script" path="res://addons/3d_player_controller/states/hanging.gd" id="8_6natx"]
 [ext_resource type="PackedScene" uid="uid://dv80q7jwkx20r" path="res://addons/3d_player_controller/debug.tscn" id="8_cusid"]
+[ext_resource type="PackedScene" uid="uid://u2wxuwpmjwha" path="res://addons/3d_player_controller/emotes.tscn" id="9_0f5id"]
 [ext_resource type="Script" path="res://addons/3d_player_controller/states/holding.gd" id="9_cytab"]
 [ext_resource type="PackedScene" uid="uid://bf6dhhwfpuau6" path="res://addons/3d_player_controller/pause.tscn" id="9_sm3t1"]
 [ext_resource type="Script" path="res://addons/3d_player_controller/states/jumping.gd" id="10_k53uo"]
@@ -22,6 +23,7 @@
 [ext_resource type="Script" path="res://addons/3d_player_controller/states/sprinting.gd" id="12_eo3gu"]
 [ext_resource type="Script" path="res://addons/3d_player_controller/states/standing.gd" id="13_sk7w8"]
 [ext_resource type="Script" path="res://addons/3d_player_controller/states/walking.gd" id="14_dd2mj"]
+[ext_resource type="Script" path="res://addons/3d_player_controller/states/driving.gd" id="15_m1meu"]
 [ext_resource type="Script" path="res://addons/3d_player_controller/states/skateboarding.gd" id="20_81s7v"]
 [ext_resource type="Script" path="res://addons/3d_player_controller/states/swimming.gd" id="21_mms7x"]
 
@@ -1026,6 +1028,45 @@ radius = 0.4
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_2b062")
+current_state = null
+enable_chat = null
+enable_emotes = false
+enable_crouching = null
+enable_double_jump = null
+enable_flying = null
+enable_jumping = null
+enable_kicking = null
+enable_punching = null
+enable_vibration = null
+friction_skateboarding = null
+force_kicking = null
+force_kicking_sprinting = null
+force_punching = null
+force_punching_sprinting = null
+force_pushing = null
+force_pushing_sprinting = null
+game_paused = null
+jump_velocity = null
+lock_camera = null
+lock_movement_x = null
+lock_movement_y = null
+lock_perspective = null
+look_sensitivity_controller = null
+look_sensitivity_mouse = null
+look_sensitivity_virtual = null
+perspective = null
+speed_crawling = null
+speed_current = null
+speed_flying = null
+speed_flying_fast = null
+speed_hanging = null
+speed_running = null
+speed_sprinting = null
+speed_swimming = null
+speed_walking = null
+zoom_max = null
+zoom_min = null
+zoom_speed = null
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 
@@ -1038,7 +1079,6 @@ script = ExtResource("2_ce2xq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
-visible = false
 shape = SubResource("CapsuleShape3D_5e6s3")
 
 [node name="Visuals" type="Node3D" parent="."]
@@ -1741,11 +1781,13 @@ target_position = Vector3(0, -0.25, 0)
 
 [node name="CameraMount" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 2.5)
-visible = false
 
 [node name="Camera3D" type="Camera3D" parent="CameraMount"]
 
 [node name="Debug" parent="CameraMount/Camera3D" instance=ExtResource("8_cusid")]
+visible = false
+
+[node name="Emotes" parent="CameraMount/Camera3D" instance=ExtResource("9_0f5id")]
 visible = false
 
 [node name="Pause" parent="CameraMount/Camera3D" instance=ExtResource("9_sm3t1")]
@@ -1776,6 +1818,10 @@ script = ExtResource("4_a5fvp")
 [node name="Crouching" type="Node" parent="States"]
 process_mode = 4
 script = ExtResource("5_o44w7")
+
+[node name="Driving" type="Node" parent="States"]
+process_mode = 4
+script = ExtResource("15_m1meu")
 
 [node name="Falling" type="Node" parent="States"]
 process_mode = 4
