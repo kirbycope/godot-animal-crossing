@@ -1,7 +1,7 @@
 [gd_scene load_steps=23 format=3 uid="uid://cl4gth1mqs7su"]
 
-[ext_resource type="Script" path="res://scenes/sandbox.gd" id="1_1dxw4"]
-[ext_resource type="Shader" path="res://scenes/sandbox_sky.gdshader" id="1_nudt6"]
+[ext_resource type="Script" uid="uid://beicfurcsuiga" path="res://scenes/sandbox.gd" id="1_1dxw4"]
+[ext_resource type="Shader" uid="uid://byfl6rph6a78e" path="res://scenes/sandbox_sky.gdshader" id="1_nudt6"]
 [ext_resource type="AudioStream" uid="uid://bgittwx4se5pm" path="res://assets/sounds/music/022_9_am.mp3" id="1_wq2pd"]
 [ext_resource type="Texture2D" uid="uid://2y0ueogjxg0q" path="res://assets/textures/tex_cloud.png" id="2_41ysf"]
 [ext_resource type="PackedScene" uid="uid://q0bo65ba0rxu" path="res://scenes/props/railroad_crossing.tscn" id="3_k31aa"]
@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://b8r82o4kimfyy" path="res://assets/world/bg/tex_cliff01_n.png" id="4_06l02"]
 [ext_resource type="PackedScene" uid="uid://djx2b67scfj5j" path="res://scenes/characters/player.tscn" id="4_530rd"]
 [ext_resource type="Texture2D" uid="uid://drg1chil3gc34" path="res://assets/textures/tex_flocky_grd.png" id="4_f0mwf"]
-[ext_resource type="Script" path="res://scenes/main/camera_3d.gd" id="5_gwb37"]
+[ext_resource type="Script" uid="uid://crsvsfbhc32r8" path="res://scenes/main/camera_3d.gd" id="5_gwb37"]
 [ext_resource type="PackedScene" uid="uid://broydqccfbhwg" path="res://scenes/characters/link.tscn" id="12_pyx2i"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3vw8w"]
@@ -18,12 +18,12 @@ shader = ExtResource("1_nudt6")
 shader_parameter/sky_top_color = Color(0.2, 0.4, 1, 1)
 shader_parameter/sky_horizon_color = Color(0.4, 0.6, 1, 1)
 shader_parameter/horizon_blur = 0.5
+shader_parameter/noise_texture = ExtResource("2_41ysf")
 shader_parameter/cloud_color = Color(1, 1, 1, 1)
 shader_parameter/cloud_scale = 1.0
 shader_parameter/cloud_density = 0.66
 shader_parameter/cloud_speed = -0.01
 shader_parameter/time = 0.0
-shader_parameter/noise_texture = ExtResource("2_41ysf")
 
 [sub_resource type="Sky" id="Sky_7ruka"]
 sky_material = SubResource("ShaderMaterial_3vw8w")
@@ -49,16 +49,17 @@ top_radius = 11.156
 bottom_radius = 11.156
 height = 100.0
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_epms5"]
-size = Vector2(1, 1)
+[sub_resource type="BoxMesh" id="BoxMesh_i1hvo"]
+size = Vector3(1, 0.001, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s3eeh"]
 albedo_texture = ExtResource("3_yifk2")
 normal_enabled = true
 normal_texture = ExtResource("4_06l02")
+uv1_triplanar = true
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_crt87"]
-size = Vector2(0.5, 0.5)
+[sub_resource type="BoxMesh" id="BoxMesh_cg56h"]
+size = Vector3(0.5, 0.001, 0.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nsth7"]
 albedo_texture = ExtResource("3_lbypm")
@@ -112,145 +113,145 @@ transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 
 [node name="Cliff1" type="CSGMesh3D" parent="World/Surface/Cliff"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 1.5, 0.5, 0)
 use_collision = true
-mesh = SubResource("PlaneMesh_epms5")
+mesh = SubResource("BoxMesh_i1hvo")
 material = SubResource("StandardMaterial3D_s3eeh")
 
 [node name="Cliff2" type="CSGMesh3D" parent="World/Surface/Cliff"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.5, 0.5, 0)
 use_collision = true
-mesh = SubResource("PlaneMesh_epms5")
+mesh = SubResource("BoxMesh_i1hvo")
 material = SubResource("StandardMaterial3D_s3eeh")
 
 [node name="Cliff3" type="CSGMesh3D" parent="World/Surface/Cliff"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.5, 0.5, 0)
 use_collision = true
-mesh = SubResource("PlaneMesh_epms5")
+mesh = SubResource("BoxMesh_i1hvo")
 material = SubResource("StandardMaterial3D_s3eeh")
 
 [node name="Cliff4" type="CSGMesh3D" parent="World/Surface/Cliff"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -1.5, 0.5, 0)
 use_collision = true
-mesh = SubResource("PlaneMesh_epms5")
+mesh = SubResource("BoxMesh_i1hvo")
 material = SubResource("StandardMaterial3D_s3eeh")
 
 [node name="Cliff5" type="CSGMesh3D" parent="World/Surface/Cliff"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 5.5, 0.5, 0)
 use_collision = true
-mesh = SubResource("PlaneMesh_epms5")
+mesh = SubResource("BoxMesh_i1hvo")
 material = SubResource("StandardMaterial3D_s3eeh")
 
 [node name="Cliff6" type="CSGMesh3D" parent="World/Surface/Cliff"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 4.5, 0.5, 0)
 use_collision = true
-mesh = SubResource("PlaneMesh_epms5")
+mesh = SubResource("BoxMesh_i1hvo")
 material = SubResource("StandardMaterial3D_s3eeh")
 
 [node name="Cliff7" type="CSGMesh3D" parent="World/Surface/Cliff"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 3.5, 0.5, 0)
 use_collision = true
-mesh = SubResource("PlaneMesh_epms5")
+mesh = SubResource("BoxMesh_i1hvo")
 material = SubResource("StandardMaterial3D_s3eeh")
 
 [node name="Cliff8" type="CSGMesh3D" parent="World/Surface/Cliff"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 2.5, 0.5, 0)
 use_collision = true
-mesh = SubResource("PlaneMesh_epms5")
+mesh = SubResource("BoxMesh_i1hvo")
 material = SubResource("StandardMaterial3D_s3eeh")
 
 [node name="Grass01a65" type="CSGMesh3D" parent="World/Surface/Cliff"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.74952, 1, -0.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_crt87")
+mesh = SubResource("BoxMesh_cg56h")
 material = SubResource("StandardMaterial3D_nsth7")
 
 [node name="Grass01a66" type="CSGMesh3D" parent="World/Surface/Cliff"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.24952, 1, -0.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_crt87")
+mesh = SubResource("BoxMesh_cg56h")
 material = SubResource("StandardMaterial3D_nsth7")
 
 [node name="Grass01a67" type="CSGMesh3D" parent="World/Surface/Cliff"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.749523, 1, -0.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_crt87")
+mesh = SubResource("BoxMesh_cg56h")
 material = SubResource("StandardMaterial3D_nsth7")
 
 [node name="Grass01a68" type="CSGMesh3D" parent="World/Surface/Cliff"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.249523, 1, -0.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_crt87")
+mesh = SubResource("BoxMesh_cg56h")
 material = SubResource("StandardMaterial3D_nsth7")
 
 [node name="Grass01a69" type="CSGMesh3D" parent="World/Surface/Cliff"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.250477, 1, -0.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_crt87")
+mesh = SubResource("BoxMesh_cg56h")
 material = SubResource("StandardMaterial3D_nsth7")
 
 [node name="Grass01a70" type="CSGMesh3D" parent="World/Surface/Cliff"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.750477, 1, -0.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_crt87")
+mesh = SubResource("BoxMesh_cg56h")
 material = SubResource("StandardMaterial3D_nsth7")
 
 [node name="Grass01a71" type="CSGMesh3D" parent="World/Surface/Cliff"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25048, 1, -0.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_crt87")
+mesh = SubResource("BoxMesh_cg56h")
 material = SubResource("StandardMaterial3D_nsth7")
 
 [node name="Grass01a72" type="CSGMesh3D" parent="World/Surface/Cliff"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75048, 1, -0.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_crt87")
+mesh = SubResource("BoxMesh_cg56h")
 material = SubResource("StandardMaterial3D_nsth7")
 
 [node name="Grass01a73" type="CSGMesh3D" parent="World/Surface/Cliff"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25048, 1, -0.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_crt87")
+mesh = SubResource("BoxMesh_cg56h")
 material = SubResource("StandardMaterial3D_nsth7")
 
 [node name="Grass01a74" type="CSGMesh3D" parent="World/Surface/Cliff"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.75048, 1, -0.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_crt87")
+mesh = SubResource("BoxMesh_cg56h")
 material = SubResource("StandardMaterial3D_nsth7")
 
 [node name="Grass01a75" type="CSGMesh3D" parent="World/Surface/Cliff"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.25048, 1, -0.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_crt87")
+mesh = SubResource("BoxMesh_cg56h")
 material = SubResource("StandardMaterial3D_nsth7")
 
 [node name="Grass01a76" type="CSGMesh3D" parent="World/Surface/Cliff"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.75048, 1, -0.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_crt87")
+mesh = SubResource("BoxMesh_cg56h")
 material = SubResource("StandardMaterial3D_nsth7")
 
 [node name="Grass01a77" type="CSGMesh3D" parent="World/Surface/Cliff"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.25048, 1, -0.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_crt87")
+mesh = SubResource("BoxMesh_cg56h")
 material = SubResource("StandardMaterial3D_nsth7")
 
 [node name="Grass01a78" type="CSGMesh3D" parent="World/Surface/Cliff"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.75048, 1, -0.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_crt87")
+mesh = SubResource("BoxMesh_cg56h")
 material = SubResource("StandardMaterial3D_nsth7")
 
 [node name="Grass01a79" type="CSGMesh3D" parent="World/Surface/Cliff"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.25048, 1, -0.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_crt87")
+mesh = SubResource("BoxMesh_cg56h")
 material = SubResource("StandardMaterial3D_nsth7")
 
 [node name="Grass01a80" type="CSGMesh3D" parent="World/Surface/Cliff"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.75048, 1, -0.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_crt87")
+mesh = SubResource("BoxMesh_cg56h")
 material = SubResource("StandardMaterial3D_nsth7")
 
 [node name="Link" parent="World/Surface" instance=ExtResource("12_pyx2i")]

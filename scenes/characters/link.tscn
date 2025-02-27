@@ -541,7 +541,7 @@ resource_name = "Walking"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pyeyp"]
 _data = {
-"Walking": SubResource("Animation_yrpdi")
+&"Walking": SubResource("Animation_yrpdi")
 }
 
 [node name="Link" type="Node3D"]

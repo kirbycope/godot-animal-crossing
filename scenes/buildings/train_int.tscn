@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://3fq0e0f7wj1x" path="res://assets/buildings/train_int/obj2.png" id="8_tou0t"]
 [ext_resource type="Texture2D" uid="uid://c6v32o4atq2bb" path="res://assets/buildings/train_int/signboard.png" id="9_iuxod"]
 [ext_resource type="Texture2D" uid="uid://c638l3el27fvj" path="res://assets/buildings/train_int/tunnel.png" id="10_jc78t"]
-[ext_resource type="Shader" path="res://scenes/buildings/train_int.gdshader" id="11_xkmbl"]
+[ext_resource type="Shader" uid="uid://cqsb7yakbpq2h" path="res://scenes/buildings/train_int.gdshader" id="11_xkmbl"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xt1nm"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)

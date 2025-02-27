@@ -748,9 +748,9 @@ tracks/16/keys = PackedFloat32Array(0, 1, -0.136906, 6.7323e-15, -6.07992e-08, 0
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_028w5"]
 _data = {
-"Driving": SubResource("Animation_78wj4"),
-"Sitting": SubResource("Animation_ghiqe"),
-"mixamo_com": SubResource("Animation_rx6m0")
+&"Driving": SubResource("Animation_78wj4"),
+&"Sitting": SubResource("Animation_ghiqe"),
+&"mixamo_com": SubResource("Animation_rx6m0")
 }
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7lje4"]

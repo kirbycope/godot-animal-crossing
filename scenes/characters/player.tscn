@@ -1,31 +1,31 @@
 [gd_scene load_steps=47 format=4 uid="uid://djx2b67scfj5j"]
 
-[ext_resource type="Script" path="res://addons/3d_player_controller/player_3d.gd" id="1_2b062"]
-[ext_resource type="Script" path="res://addons/3d_player_controller/virtual_controller_3d.gd" id="2_ce2xq"]
-[ext_resource type="Script" path="res://addons/3d_player_controller/states/climbing.gd" id="3_mgi72"]
+[ext_resource type="Script" uid="uid://dkocfwspft8xy" path="res://addons/3d_player_controller/player_3d.gd" id="1_2b062"]
+[ext_resource type="Script" uid="uid://bq3nw1xe2vk0r" path="res://addons/3d_player_controller/virtual_controller_3d.gd" id="2_ce2xq"]
+[ext_resource type="Script" uid="uid://dmyj3bs50fjrn" path="res://addons/3d_player_controller/states/climbing.gd" id="3_mgi72"]
 [ext_resource type="PackedScene" uid="uid://c7x2c4rsai64q" path="res://addons/3d_player_controller/virtual_buttons.tscn" id="3_mk1wl"]
-[ext_resource type="Texture2D" uid="uid://dsohobrywp5mu" path="res://assets/characters/cat00/cloth.png" id="3_x5nyf"]
+[ext_resource type="Texture2D" uid="uid://3i1gugjbcyl8" path="res://assets/characters/cat00/cloth.png" id="3_x5nyf"]
 [ext_resource type="Texture2D" uid="uid://bg0cu2lyrhskk" path="res://assets/characters/cat00/m.0_2.png" id="4_6f6f8"]
-[ext_resource type="Script" path="res://addons/3d_player_controller/states/crawling.gd" id="4_a5fvp"]
+[ext_resource type="Script" uid="uid://d2a1jlx0mttnr" path="res://addons/3d_player_controller/states/crawling.gd" id="4_a5fvp"]
 [ext_resource type="Texture2D" uid="uid://uvbsdam6m8xj" path="res://assets/characters/cat00/e.0_2.png" id="5_1jty1"]
-[ext_resource type="Script" path="res://addons/3d_player_controller/states/crouching.gd" id="5_o44w7"]
-[ext_resource type="Script" path="res://addons/3d_player_controller/states/falling.gd" id="6_61jea"]
+[ext_resource type="Script" uid="uid://swl5uboxq475" path="res://addons/3d_player_controller/states/crouching.gd" id="5_o44w7"]
+[ext_resource type="Script" uid="uid://dnjn4s3prmcvn" path="res://addons/3d_player_controller/states/falling.gd" id="6_61jea"]
 [ext_resource type="Texture2D" uid="uid://bj4un54hndooa" path="res://assets/characters/cat00/b0_2.png" id="6_f24o3"]
-[ext_resource type="Script" path="res://addons/3d_player_controller/states/flying.gd" id="7_f4obt"]
-[ext_resource type="Script" path="res://addons/3d_player_controller/states/hanging.gd" id="8_6natx"]
+[ext_resource type="Script" uid="uid://c622e306umhba" path="res://addons/3d_player_controller/states/flying.gd" id="7_f4obt"]
+[ext_resource type="Script" uid="uid://bc68rimn8jax2" path="res://addons/3d_player_controller/states/hanging.gd" id="8_6natx"]
 [ext_resource type="PackedScene" uid="uid://dv80q7jwkx20r" path="res://addons/3d_player_controller/debug.tscn" id="8_cusid"]
 [ext_resource type="PackedScene" uid="uid://u2wxuwpmjwha" path="res://addons/3d_player_controller/emotes.tscn" id="9_0f5id"]
-[ext_resource type="Script" path="res://addons/3d_player_controller/states/holding.gd" id="9_cytab"]
+[ext_resource type="Script" uid="uid://qbrt0702cp07" path="res://addons/3d_player_controller/states/holding.gd" id="9_cytab"]
 [ext_resource type="PackedScene" uid="uid://bf6dhhwfpuau6" path="res://addons/3d_player_controller/pause.tscn" id="9_sm3t1"]
-[ext_resource type="Script" path="res://addons/3d_player_controller/states/jumping.gd" id="10_k53uo"]
-[ext_resource type="Script" path="res://addons/3d_player_controller/states/base.gd" id="10_yx4e7"]
-[ext_resource type="Script" path="res://addons/3d_player_controller/states/running.gd" id="11_08ju1"]
-[ext_resource type="Script" path="res://addons/3d_player_controller/states/sprinting.gd" id="12_eo3gu"]
-[ext_resource type="Script" path="res://addons/3d_player_controller/states/standing.gd" id="13_sk7w8"]
-[ext_resource type="Script" path="res://addons/3d_player_controller/states/walking.gd" id="14_dd2mj"]
-[ext_resource type="Script" path="res://addons/3d_player_controller/states/driving.gd" id="15_m1meu"]
-[ext_resource type="Script" path="res://addons/3d_player_controller/states/skateboarding.gd" id="20_81s7v"]
-[ext_resource type="Script" path="res://addons/3d_player_controller/states/swimming.gd" id="21_mms7x"]
+[ext_resource type="Script" uid="uid://blng5o8o2e0gv" path="res://addons/3d_player_controller/states/jumping.gd" id="10_k53uo"]
+[ext_resource type="Script" uid="uid://gbcxrd8q2wfk" path="res://addons/3d_player_controller/states/base.gd" id="10_yx4e7"]
+[ext_resource type="Script" uid="uid://juqro08pqmu2" path="res://addons/3d_player_controller/states/running.gd" id="11_08ju1"]
+[ext_resource type="Script" uid="uid://cnllkbg6f56vi" path="res://addons/3d_player_controller/states/sprinting.gd" id="12_eo3gu"]
+[ext_resource type="Script" uid="uid://ceymyqell7kag" path="res://addons/3d_player_controller/states/standing.gd" id="13_sk7w8"]
+[ext_resource type="Script" uid="uid://dlfikj2hnte4c" path="res://addons/3d_player_controller/states/walking.gd" id="14_dd2mj"]
+[ext_resource type="Script" uid="uid://dpuqjt1r5fuai" path="res://addons/3d_player_controller/states/driving.gd" id="15_m1meu"]
+[ext_resource type="Script" uid="uid://bwfhot2kumwue" path="res://addons/3d_player_controller/states/skateboarding.gd" id="20_81s7v"]
+[ext_resource type="Script" uid="uid://btg8knitw5smv" path="res://addons/3d_player_controller/states/swimming.gd" id="21_mms7x"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5e6s3"]
 radius = 0.15
@@ -1015,11 +1015,11 @@ tracks/16/keys = PackedFloat32Array(0, 1, -0.0490547, 0.00204888, -0.0439184, 0.
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2t0o4"]
 _data = {
-"Running_In_Place": SubResource("Animation_vnq5s"),
-"Sprinting_In_Place": SubResource("Animation_bat08"),
-"Standing_Idle": SubResource("Animation_5vvvi"),
-"T-Pose (No Animation)": SubResource("Animation_lgjhq"),
-"Walking_In_Place": SubResource("Animation_kqwu3")
+&"Running_In_Place": SubResource("Animation_vnq5s"),
+&"Sprinting_In_Place": SubResource("Animation_bat08"),
+&"Standing_Idle": SubResource("Animation_5vvvi"),
+&"T-Pose (No Animation)": SubResource("Animation_lgjhq"),
+&"Walking_In_Place": SubResource("Animation_kqwu3")
 }
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_7yweg"]
@@ -1028,45 +1028,7 @@ radius = 0.4
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_2b062")
-current_state = null
-enable_chat = null
 enable_emotes = false
-enable_crouching = null
-enable_double_jump = null
-enable_flying = null
-enable_jumping = null
-enable_kicking = null
-enable_punching = null
-enable_vibration = null
-friction_skateboarding = null
-force_kicking = null
-force_kicking_sprinting = null
-force_punching = null
-force_punching_sprinting = null
-force_pushing = null
-force_pushing_sprinting = null
-game_paused = null
-jump_velocity = null
-lock_camera = null
-lock_movement_x = null
-lock_movement_y = null
-lock_perspective = null
-look_sensitivity_controller = null
-look_sensitivity_mouse = null
-look_sensitivity_virtual = null
-perspective = null
-speed_crawling = null
-speed_current = null
-speed_flying = null
-speed_flying_fast = null
-speed_hanging = null
-speed_running = null
-speed_sprinting = null
-speed_swimming = null
-speed_walking = null
-zoom_max = null
-zoom_min = null
-zoom_speed = null
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 
@@ -1749,7 +1711,7 @@ skin = SubResource("Skin_5ardy")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Visuals/AuxScene"]
 libraries = {
-"": SubResource("AnimationLibrary_2t0o4")
+&"": SubResource("AnimationLibrary_2t0o4")
 }
 autoplay = "Standing_Idle"
 playback_default_blend_time = 0.2

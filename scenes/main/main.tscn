@@ -1,11 +1,11 @@
-[gd_scene load_steps=37 format=3 uid="uid://c3n0ytq5oyds4"]
+[gd_scene load_steps=39 format=3 uid="uid://c3n0ytq5oyds4"]
 
 [ext_resource type="AudioStream" uid="uid://bg2h3mppvdg54" path="res://assets/sounds/music/main_theme.mp3" id="1_wjoo1"]
-[ext_resource type="Script" path="res://scenes/main/main.gd" id="1_xg0kj"]
+[ext_resource type="Script" uid="uid://cidb5ruisir0w" path="res://scenes/main/main.gd" id="1_xg0kj"]
 [ext_resource type="PackedScene" uid="uid://ck7v781qwvkf7" path="res://scenes/props/fobj_fence.tscn" id="2_md6av"]
 [ext_resource type="PackedScene" uid="uid://cpb10j72eta1a" path="res://scenes/props/bulletin_board.tscn" id="2_uwyae"]
 [ext_resource type="PackedScene" uid="uid://gnculwyvxiec" path="res://scenes/buildings/station_a.tscn" id="2_x6vd4"]
-[ext_resource type="Shader" path="res://scenes/sandbox_sky.gdshader" id="3_2oyhw"]
+[ext_resource type="Shader" uid="uid://byfl6rph6a78e" path="res://scenes/sandbox_sky.gdshader" id="3_2oyhw"]
 [ext_resource type="PackedScene" uid="uid://q0bo65ba0rxu" path="res://scenes/props/railroad_crossing.tscn" id="3_de2hy"]
 [ext_resource type="PackedScene" uid="uid://ct21r1mn6qiim" path="res://scenes/buildings/train_ext.tscn" id="4_ix02a"]
 [ext_resource type="Texture2D" uid="uid://2y0ueogjxg0q" path="res://assets/textures/tex_cloud.png" id="4_r3h7n"]
@@ -15,16 +15,16 @@
 [ext_resource type="PackedScene" uid="uid://cuul4y5cad5kt" path="res://scenes/world/bg_forest.tscn" id="8_d6fwg"]
 [ext_resource type="Texture2D" uid="uid://bmqmlq1p78pth" path="res://assets/textures/stone_01.png" id="8_w6mlp"]
 [ext_resource type="Texture2D" uid="uid://djlq2v5hib7rj" path="res://assets/textures/stone_01_a.png" id="9_1w7ef"]
-[ext_resource type="Script" path="res://scenes/main/path_3d.gd" id="10_0pxe5"]
-[ext_resource type="Script" path="res://scenes/main/camera_3d.gd" id="10_0yfds"]
+[ext_resource type="Script" uid="uid://8e3f7y4pbxx4" path="res://scenes/main/path_3d.gd" id="10_0pxe5"]
+[ext_resource type="Script" uid="uid://crsvsfbhc32r8" path="res://scenes/main/camera_3d.gd" id="10_0yfds"]
 [ext_resource type="Texture2D" uid="uid://lqfqebnx2emq" path="res://assets/textures/tex_grass_a.png" id="10_fxheb"]
 [ext_resource type="Texture2D" uid="uid://drg1chil3gc34" path="res://assets/textures/tex_flocky_grd.png" id="11_4gixl"]
 [ext_resource type="PackedScene" uid="uid://c1pw20be6rpev" path="res://scenes/characters/tom_nook.tscn" id="11_p0ied"]
-[ext_resource type="Shader" path="res://scenes/main/color_rect.gdshader" id="12_rxsdo"]
-[ext_resource type="Script" path="res://scenes/main/color_rect.gd" id="13_sqw0s"]
+[ext_resource type="Shader" uid="uid://g7bprndqsli8" path="res://scenes/main/color_rect.gdshader" id="12_rxsdo"]
+[ext_resource type="Script" uid="uid://bmdwx3w0828hd" path="res://scenes/main/color_rect.gd" id="13_sqw0s"]
 [ext_resource type="Texture2D" uid="uid://d3fxla45jnq7a" path="res://assets/textures/ac_nl_logo.png" id="14_iqeaw"]
-[ext_resource type="Script" path="res://scenes/main/texture_rect.gd" id="15_pj7xd"]
-[ext_resource type="Script" path="res://scenes/main/rich_text_label.gd" id="21_j73h2"]
+[ext_resource type="Script" uid="uid://db8uyihctx0id" path="res://scenes/main/texture_rect.gd" id="15_pj7xd"]
+[ext_resource type="Script" uid="uid://dfkk5hadabuf" path="res://scenes/main/rich_text_label.gd" id="21_j73h2"]
 [ext_resource type="Texture2D" uid="uid://bj7uitcvuqoj2" path="res://addons/3d_player_controller/textures/game_icons/PNG/White/2x/buttonA.png" id="26_n4jki"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3vw8w"]
@@ -32,12 +32,12 @@ shader = ExtResource("3_2oyhw")
 shader_parameter/sky_top_color = Color(0.2, 0.4, 1, 1)
 shader_parameter/sky_horizon_color = Color(0.4, 0.6, 1, 1)
 shader_parameter/horizon_blur = 0.5
+shader_parameter/noise_texture = ExtResource("4_r3h7n")
 shader_parameter/cloud_color = Color(1, 1, 1, 1)
 shader_parameter/cloud_scale = 1.0
 shader_parameter/cloud_density = 0.66
 shader_parameter/cloud_speed = -0.01
 shader_parameter/time = 0.0
-shader_parameter/noise_texture = ExtResource("4_r3h7n")
 
 [sub_resource type="Sky" id="Sky_tvs12"]
 sky_material = SubResource("ShaderMaterial_3vw8w")
@@ -47,14 +47,17 @@ background_mode = 2
 sky = SubResource("Sky_tvs12")
 tonemap_mode = 2
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_4hs1h"]
-size = Vector2(0.5, 0.5)
+[sub_resource type="BoxMesh" id="BoxMesh_6llfj"]
+size = Vector3(0.5, 0.001, 0.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vhqiw"]
 albedo_texture = ExtResource("7_gjqog")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_w8mlu"]
-size = Vector2(0.5, 0.5)
+[sub_resource type="BoxMesh" id="BoxMesh_0bhws"]
+size = Vector3(0.5, 0.001, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_62atk"]
+size = Vector3(0.5, 0.001, 0.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rxmcm"]
 albedo_texture = ExtResource("8_w6mlp")
@@ -63,6 +66,9 @@ normal_texture = ExtResource("9_1w7ef")
 uv1_scale = Vector3(2, 2, 2)
 uv1_offset = Vector3(0.5, 0, 0.5)
 uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_i7in8"]
+size = Vector3(0.5, 0.001, 0.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iomfq"]
 albedo_texture = ExtResource("10_fxheb")
@@ -157,162 +163,162 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25, 0, -1.25)
 
 [node name="Path1" type="CSGMesh3D" parent="Path"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.75012, 0, -2.24987)
-mesh = SubResource("PlaneMesh_4hs1h")
+mesh = SubResource("BoxMesh_6llfj")
 material = SubResource("StandardMaterial3D_vhqiw")
 
 [node name="Path2" type="CSGMesh3D" parent="Path"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.25012, 0, -2.24987)
-mesh = SubResource("PlaneMesh_4hs1h")
+mesh = SubResource("BoxMesh_0bhws")
 material = SubResource("StandardMaterial3D_vhqiw")
 
 [node name="Path3" type="CSGMesh3D" parent="Path"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75012, 0, -2.24987)
-mesh = SubResource("PlaneMesh_4hs1h")
+mesh = SubResource("BoxMesh_0bhws")
 material = SubResource("StandardMaterial3D_vhqiw")
 
 [node name="Path4" type="CSGMesh3D" parent="Path"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25012, 0, -2.24987)
-mesh = SubResource("PlaneMesh_4hs1h")
+mesh = SubResource("BoxMesh_0bhws")
 material = SubResource("StandardMaterial3D_vhqiw")
 
 [node name="Path5" type="CSGMesh3D" parent="Path"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75012, 0, -2.24987)
-mesh = SubResource("PlaneMesh_4hs1h")
+mesh = SubResource("BoxMesh_0bhws")
 material = SubResource("StandardMaterial3D_vhqiw")
 
 [node name="Path6" type="CSGMesh3D" parent="Path"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25012, 0, -2.24987)
-mesh = SubResource("PlaneMesh_4hs1h")
+mesh = SubResource("BoxMesh_0bhws")
 material = SubResource("StandardMaterial3D_vhqiw")
 
 [node name="Path7" type="CSGMesh3D" parent="Path"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75012, 0, -2.24987)
-mesh = SubResource("PlaneMesh_4hs1h")
+mesh = SubResource("BoxMesh_0bhws")
 material = SubResource("StandardMaterial3D_vhqiw")
 
 [node name="Path8" type="CSGMesh3D" parent="Path"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25012, 0, -2.24987)
-mesh = SubResource("PlaneMesh_4hs1h")
+mesh = SubResource("BoxMesh_0bhws")
 material = SubResource("StandardMaterial3D_vhqiw")
 
 [node name="Path9" type="CSGMesh3D" parent="Path"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24988, 0, -2.24987)
-mesh = SubResource("PlaneMesh_4hs1h")
+mesh = SubResource("BoxMesh_0bhws")
 material = SubResource("StandardMaterial3D_vhqiw")
 
 [node name="Path10" type="CSGMesh3D" parent="Path"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.74988, 0, -2.24987)
-mesh = SubResource("PlaneMesh_4hs1h")
+mesh = SubResource("BoxMesh_0bhws")
 material = SubResource("StandardMaterial3D_vhqiw")
 
 [node name="Path11" type="CSGMesh3D" parent="Path"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.24988, 0, -2.24987)
-mesh = SubResource("PlaneMesh_4hs1h")
+mesh = SubResource("BoxMesh_0bhws")
 material = SubResource("StandardMaterial3D_vhqiw")
 
 [node name="Path12" type="CSGMesh3D" parent="Path"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.74988, 0, -2.24987)
-mesh = SubResource("PlaneMesh_4hs1h")
+mesh = SubResource("BoxMesh_0bhws")
 material = SubResource("StandardMaterial3D_vhqiw")
 
 [node name="Path13" type="CSGMesh3D" parent="Path"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.24988, 0, -2.24987)
-mesh = SubResource("PlaneMesh_4hs1h")
+mesh = SubResource("BoxMesh_0bhws")
 material = SubResource("StandardMaterial3D_vhqiw")
 
 [node name="Path14" type="CSGMesh3D" parent="Path"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.74988, 0, -2.24987)
-mesh = SubResource("PlaneMesh_4hs1h")
+mesh = SubResource("BoxMesh_0bhws")
 material = SubResource("StandardMaterial3D_vhqiw")
 
 [node name="Path15" type="CSGMesh3D" parent="Path"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.24988, 0, -2.24987)
-mesh = SubResource("PlaneMesh_4hs1h")
+mesh = SubResource("BoxMesh_0bhws")
 material = SubResource("StandardMaterial3D_vhqiw")
 
 [node name="Path16" type="CSGMesh3D" parent="Path"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.74988, 0, -2.24987)
-mesh = SubResource("PlaneMesh_4hs1h")
+mesh = SubResource("BoxMesh_0bhws")
 material = SubResource("StandardMaterial3D_vhqiw")
 
 [node name="Path17" type="CSGMesh3D" parent="Path"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.75012, 0, -2.74987)
-mesh = SubResource("PlaneMesh_4hs1h")
+mesh = SubResource("BoxMesh_0bhws")
 material = SubResource("StandardMaterial3D_vhqiw")
 
 [node name="Path18" type="CSGMesh3D" parent="Path"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.25012, 0, -2.74987)
-mesh = SubResource("PlaneMesh_4hs1h")
+mesh = SubResource("BoxMesh_0bhws")
 material = SubResource("StandardMaterial3D_vhqiw")
 
 [node name="Path19" type="CSGMesh3D" parent="Path"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.75012, 0, -2.74987)
-mesh = SubResource("PlaneMesh_4hs1h")
+mesh = SubResource("BoxMesh_0bhws")
 material = SubResource("StandardMaterial3D_vhqiw")
 
 [node name="Path20" type="CSGMesh3D" parent="Path"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25012, 0, -2.74987)
-mesh = SubResource("PlaneMesh_4hs1h")
+mesh = SubResource("BoxMesh_0bhws")
 material = SubResource("StandardMaterial3D_vhqiw")
 
 [node name="Path21" type="CSGMesh3D" parent="Path"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75012, 0, -2.74987)
-mesh = SubResource("PlaneMesh_4hs1h")
+mesh = SubResource("BoxMesh_0bhws")
 material = SubResource("StandardMaterial3D_vhqiw")
 
 [node name="Path22" type="CSGMesh3D" parent="Path"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25012, 0, -2.74987)
-mesh = SubResource("PlaneMesh_4hs1h")
+mesh = SubResource("BoxMesh_0bhws")
 material = SubResource("StandardMaterial3D_vhqiw")
 
 [node name="Path23" type="CSGMesh3D" parent="Path"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.75012, 0, -2.74987)
-mesh = SubResource("PlaneMesh_4hs1h")
+mesh = SubResource("BoxMesh_0bhws")
 material = SubResource("StandardMaterial3D_vhqiw")
 
 [node name="Path24" type="CSGMesh3D" parent="Path"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25012, 0, -2.74987)
-mesh = SubResource("PlaneMesh_4hs1h")
+mesh = SubResource("BoxMesh_0bhws")
 material = SubResource("StandardMaterial3D_vhqiw")
 
 [node name="Path25" type="CSGMesh3D" parent="Path"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24988, 0, -2.74987)
-mesh = SubResource("PlaneMesh_4hs1h")
+mesh = SubResource("BoxMesh_0bhws")
 material = SubResource("StandardMaterial3D_vhqiw")
 
 [node name="Path26" type="CSGMesh3D" parent="Path"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.74988, 0, -2.74987)
-mesh = SubResource("PlaneMesh_4hs1h")
+mesh = SubResource("BoxMesh_0bhws")
 material = SubResource("StandardMaterial3D_vhqiw")
 
 [node name="Path27" type="CSGMesh3D" parent="Path"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.24988, 0, -2.74987)
-mesh = SubResource("PlaneMesh_4hs1h")
+mesh = SubResource("BoxMesh_0bhws")
 material = SubResource("StandardMaterial3D_vhqiw")
 
 [node name="Path28" type="CSGMesh3D" parent="Path"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.74988, 0, -2.74987)
-mesh = SubResource("PlaneMesh_4hs1h")
+mesh = SubResource("BoxMesh_0bhws")
 material = SubResource("StandardMaterial3D_vhqiw")
 
 [node name="Path29" type="CSGMesh3D" parent="Path"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.24988, 0, -2.74987)
-mesh = SubResource("PlaneMesh_4hs1h")
+mesh = SubResource("BoxMesh_0bhws")
 material = SubResource("StandardMaterial3D_vhqiw")
 
 [node name="Path30" type="CSGMesh3D" parent="Path"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.74988, 0, -2.74987)
-mesh = SubResource("PlaneMesh_4hs1h")
+mesh = SubResource("BoxMesh_0bhws")
 material = SubResource("StandardMaterial3D_vhqiw")
 
 [node name="Path31" type="CSGMesh3D" parent="Path"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.24988, 0, -2.74987)
-mesh = SubResource("PlaneMesh_4hs1h")
+mesh = SubResource("BoxMesh_0bhws")
 material = SubResource("StandardMaterial3D_vhqiw")
 
 [node name="Path32" type="CSGMesh3D" parent="Path"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.74988, 0, -2.74987)
-mesh = SubResource("PlaneMesh_4hs1h")
+mesh = SubResource("BoxMesh_0bhws")
 material = SubResource("StandardMaterial3D_vhqiw")
 
 [node name="Stone" type="Node3D" parent="."]
@@ -320,133 +326,133 @@ material = SubResource("StandardMaterial3D_vhqiw")
 [node name="Stone01a2" type="CSGMesh3D" parent="Stone"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.74952, 0, -1.75018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_62atk")
 material = SubResource("StandardMaterial3D_rxmcm")
 
 [node name="Stone01a4" type="CSGMesh3D" parent="Stone"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.24952, 0, -1.75018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_62atk")
 material = SubResource("StandardMaterial3D_rxmcm")
 
 [node name="Stone01a6" type="CSGMesh3D" parent="Stone"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.74952, 0, -1.75018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_62atk")
 material = SubResource("StandardMaterial3D_rxmcm")
 
 [node name="Stone01a8" type="CSGMesh3D" parent="Stone"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.24952, 0, -1.75018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_62atk")
 material = SubResource("StandardMaterial3D_rxmcm")
 
 [node name="Stone01a10" type="CSGMesh3D" parent="Stone"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.74952, 0, -1.75018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_62atk")
 material = SubResource("StandardMaterial3D_rxmcm")
 
 [node name="Stone01a11" type="CSGMesh3D" parent="Stone"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.24952, 0, -1.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_62atk")
 material = SubResource("StandardMaterial3D_rxmcm")
 
 [node name="Stone01a12" type="CSGMesh3D" parent="Stone"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.24952, 0, -1.75018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_62atk")
 material = SubResource("StandardMaterial3D_rxmcm")
 
 [node name="Stone01a13" type="CSGMesh3D" parent="Stone"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.74952, 0, -1.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_62atk")
 material = SubResource("StandardMaterial3D_rxmcm")
 
 [node name="Stone01a14" type="CSGMesh3D" parent="Stone"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.74952, 0, -1.75018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_62atk")
 material = SubResource("StandardMaterial3D_rxmcm")
 
 [node name="Stone01a15" type="CSGMesh3D" parent="Stone"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.24952, 0, -1.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_62atk")
 material = SubResource("StandardMaterial3D_rxmcm")
 
 [node name="Stone01a16" type="CSGMesh3D" parent="Stone"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.24952, 0, -1.75018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_62atk")
 material = SubResource("StandardMaterial3D_rxmcm")
 
 [node name="Stone01a17" type="CSGMesh3D" parent="Stone"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25048, 0, -1.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_62atk")
 material = SubResource("StandardMaterial3D_rxmcm")
 
 [node name="Stone01a18" type="CSGMesh3D" parent="Stone"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25048, 0, -1.75018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_62atk")
 material = SubResource("StandardMaterial3D_rxmcm")
 
 [node name="Stone01a19" type="CSGMesh3D" parent="Stone"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75048, 0, -1.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_62atk")
 material = SubResource("StandardMaterial3D_rxmcm")
 
 [node name="Stone01a20" type="CSGMesh3D" parent="Stone"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75048, 0, -1.75018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_62atk")
 material = SubResource("StandardMaterial3D_rxmcm")
 
 [node name="Stone01a21" type="CSGMesh3D" parent="Stone"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25048, 0, -1.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_62atk")
 material = SubResource("StandardMaterial3D_rxmcm")
 
 [node name="Stone01a22" type="CSGMesh3D" parent="Stone"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25048, 0, -1.75018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_62atk")
 material = SubResource("StandardMaterial3D_rxmcm")
 
 [node name="Stone01a24" type="CSGMesh3D" parent="Stone"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75048, 0, -1.75018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_62atk")
 material = SubResource("StandardMaterial3D_rxmcm")
 
 [node name="Stone01a26" type="CSGMesh3D" parent="Stone"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25048, 0, -1.75018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_62atk")
 material = SubResource("StandardMaterial3D_rxmcm")
 
 [node name="Stone01a28" type="CSGMesh3D" parent="Stone"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.75048, 0, -1.75018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_62atk")
 material = SubResource("StandardMaterial3D_rxmcm")
 
 [node name="Stone01a30" type="CSGMesh3D" parent="Stone"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.25048, 0, -1.75018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_62atk")
 material = SubResource("StandardMaterial3D_rxmcm")
 
 [node name="Stone01a32" type="CSGMesh3D" parent="Stone"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.75048, 0, -1.75018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_62atk")
 material = SubResource("StandardMaterial3D_rxmcm")
 
 [node name="Grass" type="Node3D" parent="."]
@@ -455,733 +461,733 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
 [node name="Grass01a1" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.74952, 0, -0.75018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a2" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.24952, 0, -0.75018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a3" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.749523, 0, -0.75018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a4" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.249523, 0, -0.75018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a5" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.74952, 0, -0.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a6" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.24952, 0, -0.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a7" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.749523, 0, -0.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a8" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.249523, 0, -0.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a9" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.74952, 0, 0.24982)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a10" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.24952, 0, 0.24982)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a11" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.749523, 0, 0.24982)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a12" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.249523, 0, 0.24982)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a13" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.74952, 0, 0.74982)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a14" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.24952, 0, 0.74982)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a15" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.749523, 0, 0.74982)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a16" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.249523, 0, 0.74982)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a17" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.74952, 0, -1.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a99" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.24952, 0, -1.75018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a100" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.74952, 0, -1.75018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a121" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.24952, 0, -1.75018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a122" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.74952, 0, -1.75018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a18" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.24952, 0, -1.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a101" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.74952, 0, -0.75018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a102" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.24952, 0, -0.75018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a103" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.74952, 0, -0.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a104" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.24952, 0, -0.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a105" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.74952, 0, 0.24982)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a106" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.24952, 0, 0.24982)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a107" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.74952, 0, 0.74982)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a108" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.24952, 0, 0.74982)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a109" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.74952, 0, -1.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a110" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.24952, 0, -1.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a111" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.74952, 0, -0.75018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a112" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.24952, 0, -0.75018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a113" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.74952, 0, -0.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a114" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.24952, 0, -0.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a115" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.74952, 0, 0.24982)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a116" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.24952, 0, 0.24982)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a117" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.74952, 0, 0.74982)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a118" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.24952, 0, 0.74982)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a119" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.74952, 0, -1.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a120" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.24952, 0, -1.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a19" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.74952, 0, -1.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a20" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.24952, 0, -1.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a21" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.250477, 0, -0.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a22" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.750477, 0, -0.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a23" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25048, 0, -0.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a24" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75048, 0, -0.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a25" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.250477, 0, 0.24982)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a26" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.750477, 0, 0.24982)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a27" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25048, 0, 0.24982)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a28" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75048, 0, 0.24982)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a29" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.250477, 0, 0.74982)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a30" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.750477, 0, 0.74982)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a31" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25048, 0, 0.74982)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a32" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75048, 0, 0.74982)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a33" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.25048, 0, -1.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a65" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.75048, 0, -1.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a66" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25048, 0, -1.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a67" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25048, 0, -0.75018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a68" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75048, 0, -0.75018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a69" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25048, 0, -0.75018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a70" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75048, 0, -0.75018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a71" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25048, 0, -0.75018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a72" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.75048, 0, -0.75018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a73" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.25048, 0, -0.75018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a74" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.75048, 0, -0.75018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a34" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.75048, 0, -1.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a35" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.25048, 0, -1.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a36" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.75048, 0, -1.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a37" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25048, 0, -0.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a38" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.75048, 0, -0.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a39" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.25048, 0, -0.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a40" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.75048, 0, -0.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a41" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25048, 0, 0.24982)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a42" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.75048, 0, 0.24982)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a43" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.25048, 0, 0.24982)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a44" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.75048, 0, 0.24982)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a45" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25048, 0, 0.74982)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a46" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.75048, 0, 0.74982)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a47" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.25048, 0, 0.74982)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a48" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.75048, 0, 0.74982)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a49" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.25048, 0, -0.75018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a50" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.75048, 0, -0.75018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a51" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.25048, 0, -0.75018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a52" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.75048, 0, -0.75018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a53" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.25048, 0, -0.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a54" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.75048, 0, -0.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a55" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.25048, 0, -0.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a56" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.75048, 0, -0.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a57" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.25048, 0, 0.24982)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a58" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.75048, 0, 0.24982)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a59" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.25048, 0, 0.24982)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a60" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.75048, 0, 0.24982)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a61" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.25048, 0, 0.74982)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a62" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.75048, 0, 0.74982)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a63" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.25048, 0, 0.74982)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a64" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.75048, 0, 0.74982)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a75" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.25048, 0, -1.75018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a76" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.75048, 0, -1.75018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a77" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.25048, 0, -1.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a78" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.75048, 0, -1.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a79" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.25048, 0, -0.75018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a80" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.75048, 0, -0.75018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a81" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.25048, 0, -0.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a82" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.75048, 0, -0.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a83" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.25048, 0, 0.24982)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a85" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.25048, 0, 0.74982)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a86" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.75048, 0, 0.74982)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a84" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.75048, 0, 0.24982)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a87" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.25048, 0, -1.75018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a88" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.75048, 0, -1.75018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a89" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.25048, 0, -1.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a90" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.75048, 0, -1.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a91" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.25048, 0, -0.75018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a92" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.75048, 0, -0.75018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a93" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.25048, 0, -0.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a94" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.75048, 0, -0.25018)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a95" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.25048, 0, 0.24982)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a96" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.25048, 0, 0.74982)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a97" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.75048, 0, 0.74982)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Grass01a98" type="CSGMesh3D" parent="Grass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.75048, 0, 0.24982)
 use_collision = true
-mesh = SubResource("PlaneMesh_w8mlu")
+mesh = SubResource("BoxMesh_i7in8")
 material = SubResource("StandardMaterial3D_iomfq")
 
 [node name="Camera3D" type="Camera3D" parent="."]

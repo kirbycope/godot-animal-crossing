@@ -458,15 +458,17 @@ func move_camera():
 
 	# Check if in "first person" perspective
 	if perspective == 1:
+	
+		pass
 
 		# Get the index of the bone in the player's skeleton
-		var bone_index = player_skeleton.find_bone(bone_name_head)
+		#var bone_index = player_skeleton.find_bone(bone_name_head)
 
 		# Get the overall transform of the specified bone, with respect to the player's skeleton.
-		var bone_pose = player_skeleton.get_bone_global_pose(bone_index)
+		#var bone_pose = player_skeleton.get_bone_global_pose(bone_index)
 
 		# Adjust the camera mount position to match the bone's relative position (adjusting for $Visuals/AuxScene scaling)
-		camera_mount.position = Vector3(-bone_pose.origin.x * 0.01, bone_pose.origin.y * 0.01, (-bone_pose.origin.z * 0.01) - 0.165)
+		#camera_mount.position = Vector3(-bone_pose.origin.x * 0.01, bone_pose.origin.y * 0.01, (-bone_pose.origin.z * 0.01) - 0.165)
 
 
 ## Moves the player based on velocity and shapecast collision.
