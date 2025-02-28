@@ -1,7 +1,7 @@
 ![Thumbnail](/ci/thumbnail.png)
 
 # godot-animal-crossing
-A remake of Animal Crossing using the Godot Game Engine.
+The opening scene of Animal Crossing: New Leaf (DS, 2012) made using the Godot game engine.
 
 <details>
 <summary>Using Addons</summary>
