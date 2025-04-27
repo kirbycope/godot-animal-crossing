@@ -1,31 +1,38 @@
-[gd_scene load_steps=47 format=4 uid="uid://djx2b67scfj5j"]
+[gd_scene load_steps=54 format=4 uid="uid://djx2b67scfj5j"]
 
-[ext_resource type="Script" uid="uid://dkocfwspft8xy" path="res://addons/3d_player_controller/player_3d.gd" id="1_2b062"]
-[ext_resource type="Script" uid="uid://bq3nw1xe2vk0r" path="res://addons/3d_player_controller/virtual_controller_3d.gd" id="2_ce2xq"]
-[ext_resource type="Script" uid="uid://dmyj3bs50fjrn" path="res://addons/3d_player_controller/states/climbing.gd" id="3_mgi72"]
-[ext_resource type="PackedScene" uid="uid://c7x2c4rsai64q" path="res://addons/3d_player_controller/virtual_buttons.tscn" id="3_mk1wl"]
+[ext_resource type="Script" uid="uid://2iaqywmqcahl" path="res://addons/3d_player_controller/player_3d.gd" id="1_2b062"]
+[ext_resource type="Script" uid="uid://qg3kc3fkwemc" path="res://addons/3d_player_controller/virtual_controller_3d.gd" id="2_ce2xq"]
+[ext_resource type="Script" uid="uid://bxskxesywooou" path="res://addons/3d_player_controller/states/climbing.gd" id="3_mgi72"]
+[ext_resource type="Script" uid="uid://duayexmvx1psh" path="res://addons/3d_player_controller/virtual_buttons.gd" id="3_vwwfy"]
 [ext_resource type="Texture2D" uid="uid://3i1gugjbcyl8" path="res://assets/characters/cat00/cloth.png" id="3_x5nyf"]
 [ext_resource type="Texture2D" uid="uid://bg0cu2lyrhskk" path="res://assets/characters/cat00/m.0_2.png" id="4_6f6f8"]
-[ext_resource type="Script" uid="uid://d2a1jlx0mttnr" path="res://addons/3d_player_controller/states/crawling.gd" id="4_a5fvp"]
+[ext_resource type="Script" uid="uid://br5fy64tx7tfn" path="res://addons/3d_player_controller/states/crawling.gd" id="4_a5fvp"]
+[ext_resource type="PackedScene" uid="uid://dg7alw1ljs6jc" path="res://addons/3d_player_controller/virtual_buttons_bottom_left.tscn" id="4_dg40j"]
 [ext_resource type="Texture2D" uid="uid://uvbsdam6m8xj" path="res://assets/characters/cat00/e.0_2.png" id="5_1jty1"]
-[ext_resource type="Script" uid="uid://swl5uboxq475" path="res://addons/3d_player_controller/states/crouching.gd" id="5_o44w7"]
-[ext_resource type="Script" uid="uid://dnjn4s3prmcvn" path="res://addons/3d_player_controller/states/falling.gd" id="6_61jea"]
+[ext_resource type="PackedScene" uid="uid://clo0cpddagrkh" path="res://addons/3d_player_controller/virtual_buttons_bottom_right.tscn" id="5_7xgtv"]
+[ext_resource type="Script" uid="uid://dgr1stgatu2la" path="res://addons/3d_player_controller/states/crouching.gd" id="5_o44w7"]
+[ext_resource type="PackedScene" uid="uid://r3qggst0jwcy" path="res://addons/3d_player_controller/virtual_buttons_top_left.tscn" id="6_6rclf"]
+[ext_resource type="Script" uid="uid://da2abedbjpere" path="res://addons/3d_player_controller/states/falling.gd" id="6_61jea"]
 [ext_resource type="Texture2D" uid="uid://bj4un54hndooa" path="res://assets/characters/cat00/b0_2.png" id="6_f24o3"]
-[ext_resource type="Script" uid="uid://c622e306umhba" path="res://addons/3d_player_controller/states/flying.gd" id="7_f4obt"]
-[ext_resource type="Script" uid="uid://bc68rimn8jax2" path="res://addons/3d_player_controller/states/hanging.gd" id="8_6natx"]
+[ext_resource type="Script" uid="uid://b1b2rgyyrsjig" path="res://addons/3d_player_controller/states/flying.gd" id="7_f4obt"]
+[ext_resource type="PackedScene" uid="uid://cstsy0gh6slk4" path="res://addons/3d_player_controller/virtual_buttons_top_right.tscn" id="7_s0anf"]
+[ext_resource type="Script" uid="uid://d31ddqb4hyuqm" path="res://addons/3d_player_controller/states/hanging.gd" id="8_6natx"]
 [ext_resource type="PackedScene" uid="uid://dv80q7jwkx20r" path="res://addons/3d_player_controller/debug.tscn" id="8_cusid"]
 [ext_resource type="PackedScene" uid="uid://u2wxuwpmjwha" path="res://addons/3d_player_controller/emotes.tscn" id="9_0f5id"]
-[ext_resource type="Script" uid="uid://qbrt0702cp07" path="res://addons/3d_player_controller/states/holding.gd" id="9_cytab"]
+[ext_resource type="Script" uid="uid://cyls4atmagils" path="res://addons/3d_player_controller/states/holding.gd" id="9_cytab"]
 [ext_resource type="PackedScene" uid="uid://bf6dhhwfpuau6" path="res://addons/3d_player_controller/pause.tscn" id="9_sm3t1"]
-[ext_resource type="Script" uid="uid://blng5o8o2e0gv" path="res://addons/3d_player_controller/states/jumping.gd" id="10_k53uo"]
-[ext_resource type="Script" uid="uid://gbcxrd8q2wfk" path="res://addons/3d_player_controller/states/base.gd" id="10_yx4e7"]
-[ext_resource type="Script" uid="uid://juqro08pqmu2" path="res://addons/3d_player_controller/states/running.gd" id="11_08ju1"]
-[ext_resource type="Script" uid="uid://cnllkbg6f56vi" path="res://addons/3d_player_controller/states/sprinting.gd" id="12_eo3gu"]
-[ext_resource type="Script" uid="uid://ceymyqell7kag" path="res://addons/3d_player_controller/states/standing.gd" id="13_sk7w8"]
-[ext_resource type="Script" uid="uid://dlfikj2hnte4c" path="res://addons/3d_player_controller/states/walking.gd" id="14_dd2mj"]
-[ext_resource type="Script" uid="uid://dpuqjt1r5fuai" path="res://addons/3d_player_controller/states/driving.gd" id="15_m1meu"]
-[ext_resource type="Script" uid="uid://bwfhot2kumwue" path="res://addons/3d_player_controller/states/skateboarding.gd" id="20_81s7v"]
-[ext_resource type="Script" uid="uid://btg8knitw5smv" path="res://addons/3d_player_controller/states/swimming.gd" id="21_mms7x"]
+[ext_resource type="Script" uid="uid://qvcaqop34woy" path="res://addons/3d_player_controller/states/jumping.gd" id="10_k53uo"]
+[ext_resource type="Script" uid="uid://b23wyc1lxy7ni" path="res://addons/3d_player_controller/states/base.gd" id="10_yx4e7"]
+[ext_resource type="Script" uid="uid://c0qrjoqgy114k" path="res://addons/3d_player_controller/states/running.gd" id="11_08ju1"]
+[ext_resource type="Script" uid="uid://cgg7od35p2mlc" path="res://addons/3d_player_controller/states/sprinting.gd" id="12_eo3gu"]
+[ext_resource type="Script" uid="uid://xf1vm85b12dr" path="res://addons/3d_player_controller/camera_3d.gd" id="12_s1x7u"]
+[ext_resource type="Texture2D" uid="uid://c4wibovgpj7xy" path="res://addons/3d_player_controller/textures/reticle.png" id="13_c3kfx"]
+[ext_resource type="Script" uid="uid://c7ko4ugxsmibr" path="res://addons/3d_player_controller/states/standing.gd" id="13_sk7w8"]
+[ext_resource type="Script" uid="uid://b6rci3sxt5iq3" path="res://addons/3d_player_controller/states/walking.gd" id="14_dd2mj"]
+[ext_resource type="Script" uid="uid://drdtp8y8bxm65" path="res://addons/3d_player_controller/states/driving.gd" id="15_m1meu"]
+[ext_resource type="PackedScene" uid="uid://b4e68syey7fke" path="res://addons/3d_player_controller/settings.tscn" id="16_dg40j"]
+[ext_resource type="Script" uid="uid://ckird2kckfr8r" path="res://addons/3d_player_controller/states/skateboarding.gd" id="20_81s7v"]
+[ext_resource type="Script" uid="uid://bxwk8hsio3fh4" path="res://addons/3d_player_controller/states/swimming.gd" id="21_mms7x"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5e6s3"]
 radius = 0.15
@@ -1026,7 +1033,7 @@ _data = {
 height = 0.1
 radius = 0.4
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" groups=["Player"]]
 script = ExtResource("1_2b062")
 enable_emotes = false
 
@@ -1037,7 +1044,40 @@ enable_emotes = false
 [node name="VirtualController3D" type="Node2D" parent="CanvasLayer"]
 script = ExtResource("2_ce2xq")
 
-[node name="VirtualButtons" parent="CanvasLayer" instance=ExtResource("3_mk1wl")]
+[node name="VirtualButtons" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_vwwfy")
+
+[node name="VirtualButtonsBottomLeft" parent="CanvasLayer" instance=ExtResource("4_dg40j")]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_right = 0.0
+grow_horizontal = 1
+grow_vertical = 0
+
+[node name="VirtualButtonsBottomRight" parent="CanvasLayer" instance=ExtResource("5_7xgtv")]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+script = null
+
+[node name="VirtualButtonsTopLeft" parent="CanvasLayer" instance=ExtResource("6_6rclf")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="VirtualButtonsTopRight" parent="CanvasLayer" instance=ExtResource("7_s0anf")]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
@@ -1745,9 +1785,28 @@ target_position = Vector3(0, -0.25, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 2.5)
 
 [node name="Camera3D" type="Camera3D" parent="CameraMount"]
+script = ExtResource("12_s1x7u")
 
-[node name="Debug" parent="CameraMount/Camera3D" instance=ExtResource("8_cusid")]
+[node name="Retical" type="Control" parent="CameraMount/Camera3D"]
 visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CameraMount/Camera3D/Retical"]
+texture_filter = 1
+layout_mode = 0
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 4.0
+offset_bottom = 4.0
+texture = ExtResource("13_c3kfx")
+stretch_mode = 3
 
 [node name="Emotes" parent="CameraMount/Camera3D" instance=ExtResource("9_0f5id")]
 visible = false
@@ -1755,13 +1814,15 @@ visible = false
 [node name="Pause" parent="CameraMount/Camera3D" instance=ExtResource("9_sm3t1")]
 visible = false
 
+[node name="Settings" parent="CameraMount/Camera3D" instance=ExtResource("16_dg40j")]
+visible = false
+
+[node name="Debug" parent="CameraMount/Camera3D" instance=ExtResource("8_cusid")]
+visible = false
+
 [node name="RayCast3D" type="RayCast3D" parent="CameraMount/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.5)
 target_position = Vector3(0, 0, -1)
-
-[node name="ItemMount" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
-visible = false
 
 [node name="States" type="Node" parent="."]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cl4gth1mqs7su"]
+[gd_scene load_steps=22 format=3 uid="uid://cl4gth1mqs7su"]
 
 [ext_resource type="Script" uid="uid://beicfurcsuiga" path="res://scenes/sandbox.gd" id="1_1dxw4"]
 [ext_resource type="Shader" uid="uid://byfl6rph6a78e" path="res://scenes/sandbox_sky.gdshader" id="1_nudt6"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://djx2b67scfj5j" path="res://scenes/characters/player.tscn" id="4_530rd"]
 [ext_resource type="Texture2D" uid="uid://drg1chil3gc34" path="res://assets/textures/tex_flocky_grd.png" id="4_f0mwf"]
 [ext_resource type="Script" uid="uid://crsvsfbhc32r8" path="res://scenes/main/camera_3d.gd" id="5_gwb37"]
-[ext_resource type="PackedScene" uid="uid://broydqccfbhwg" path="res://scenes/characters/link.tscn" id="12_pyx2i"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3vw8w"]
 shader = ExtResource("1_nudt6")
@@ -105,10 +104,10 @@ skeleton = NodePath("../..")
 [node name="Surface" type="Node3D" parent="World"]
 
 [node name="RailroadCrossing" parent="World/Surface" instance=ExtResource("3_k31aa")]
-transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 11.1855, 0)
+transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 11.1855, -0.2)
 
 [node name="Cliff" type="Node3D" parent="World/Surface"]
-transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, -2, 11.11, -1)
+transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, -2, 11.11, -1.2)
 
 [node name="Cliff1" type="CSGMesh3D" parent="World/Surface/Cliff"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 1.5, 0.5, 0)
@@ -253,6 +252,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.75048, 1, -0.25018)
 use_collision = true
 mesh = SubResource("BoxMesh_cg56h")
 material = SubResource("StandardMaterial3D_nsth7")
-
-[node name="Link" parent="World/Surface" instance=ExtResource("12_pyx2i")]
-transform = Transform3D(12, 0, 0, 0, 12, 0, 0, 0, 12, 0, 11.156, -0.5)

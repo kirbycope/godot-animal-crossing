@@ -22,10 +22,10 @@ func _ready() -> void:
 	player.lock_perspective = true
 	player.speed_running = 1.0
 	player.speed_sprinting = 1.5
-	player.get_node("CanvasLayer/VirtualButtons/TouchScreenButtonA").modulate = "dc3545"
-	player.get_node("CanvasLayer/VirtualButtons/TouchScreenButtonB").modulate = "ffc107"
-	player.get_node("CanvasLayer/VirtualButtons/TouchScreenButtonX").modulate = "007bff"
-	player.get_node("CanvasLayer/VirtualButtons/TouchScreenButtonY").modulate = "28a745"
+	player.get_node("CanvasLayer/VirtualButtonsBottomRight/TouchScreenButtonA").modulate = "dc3545"
+	player.get_node("CanvasLayer/VirtualButtonsBottomRight/TouchScreenButtonB").modulate = "ffc107"
+	player.get_node("CanvasLayer/VirtualButtonsBottomRight/TouchScreenButtonX").modulate = "007bff"
+	player.get_node("CanvasLayer/VirtualButtonsBottomRight/TouchScreenButtonY").modulate = "28a745"
 	$Player/States/Standing.start()
 
 
