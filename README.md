@@ -3,6 +3,9 @@
 # godot-animal-crossing
 The opening scene of Animal Crossing: New Leaf (DS, 2012) made using the Godot game engine.
 
+## Background
+I was inspired by [this post](https://www.reddit.com/r/AnimalCrossing/comments/gho4yt/what_is_the_radius_of_acnh/) on Reddit, where `u/chcknboyfan` worked out the diameter of the Animal Crossing World. I also recalled [Shesez](https://www.youtube.com/watch?v=YjtfQoyrRRs) showing us the AC world was round, like a cylinder on its side. I modified my player controller to only move left and right. For up and down, I created a virtual velocity variable and rotate the world instead.
+
 <details>
 <summary>Using Addons</summary>
 
